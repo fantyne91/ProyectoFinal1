@@ -1,50 +1,165 @@
 header{
    
-    height:200px auto;
-    margin:10px auto;
-   
-    padding:20px;
-    background-color: rgb(61, 185, 190);
+    height:160px ;
+     
+    padding:20px 30px;
+    background-color: rgb(58, 167, 171);
     color: white;
+
+   align-content: center;
+    text-align: center;
+    text-shadow: 2px 1px 10px rgb(7, 32, 59);
+    font-family: monospace;
+    font-variant: small-caps;
+    font-size: 1.4em;
    
 }
+header>p{
+    margin:0;
+}
+nav{
+    margin-bottom: 40px;
+    font-variant: normal ;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0px 100px !important;
+  
+}
+
+
 body{
-    background-color: wheat;
-    margin:50px;
+    background-color: rgb(244, 228, 200);
+    margin:50px 50px 0px 50px;
+    font-variant: small-caps;
+    text-align: center;
+/* CONSEGUIR FOOTER AL FINAL BODY con FLEX; MINIMO altura PANTALLA 100vh*/
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
 }
-footer{
-    float:inline-end;
-}
+
 li{
     font-weight:600;
 }
-.loggin{
+form{
+    background-color: rgb(245, 252, 251)!important;
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    float:right; 
-    margin-left: 50px; 
-    margin:50px auto;
+    border-radius: 10px;
+    padding:10px;
     
-    width: 400px;
-    padding: 10px;
-     
-    background-color: rgb(132, 129, 129);
 }
 
-.formUsuario{
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    float:left;
-    
-    background-color: rgb(223, 15, 15);
-    width: 400px;
+div.formUsuario {       
+    left:40px;      
+    margin:0px;
     padding: 10px;
-    margin-left:50px;
+    position: absolute;
+    width: 250px;  
+    height:700px;   
+   
+}
+
+div.formLoggin {   
+
+    /* FLEXBOX IMAGENES*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin: 5px auto;
+    
+    width:350px;
+    height:auto;
+    
+} 
+div.formLoggin>form{
+    width: 320px;
+    color: rgb(159, 4, 4);
+}
+
+.formFiltro {
+    height:280px !important;
+    width: 220px;
+    position: absolute;
+
+}
+.error{
+    color:black;
+    background:linear-gradient( rgb(249, 92, 92),rgb(245, 221, 221)) ;
+    border-radius: 20px;
+    margin: 0px auto;
+    padding:5px 16px;
+   position: relative;
+   width: 220px;
+   align-items: center;
+   
+}
+input.form-control{
+   
+    font-size: 0.9em;
+}
+.cuadro{
+    background-color:  rgb(58, 167, 171);
+    color: white;
+    border-radius: 10px;    
+    padding: 5px;
+}
+.link{
+    color:white;
+   font-style: oblique;
+    font-weight: bold;
+   
+}
+.imagenes{
+    /* FLEXBOX IMAGENES*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    
+    width:auto;
+    height:auto;
+    position: relative !important;
+    left:230px;
+    margin-right:220px;
+    
+}
+.imagenes> p{
+    width: 800px;
+}
+.imagen{
+    float: left;
+    font-size: 0.9em;
+    margin: 10px;
+    height:200px;
+}
+.card-body{
+    font-size: 0.9em;;
+
+}
+.btn.btn-primary{
+    font-size: small !important;
+    background-color: rgb(58, 167, 171);
+    text-shadow: 2px 1px 10px rgb(7, 32, 59);
+    width: auto;
+    height:25px;
+    padding:3px;
 }
 
 
-
-
+#footer{
+   
+    margin-top:10px;   
+    padding: 20px !important;
+ }
+ #footer a{
+     margin-top:auto;
+     padding-right: 30px;
+ }
 
