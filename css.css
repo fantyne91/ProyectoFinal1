@@ -1,6 +1,5 @@
-header{
-   
-    height:160px ;
+header{    
+    height:100px ;
      
     padding:20px 30px;
     background-color: rgb(58, 167, 171);
@@ -11,8 +10,7 @@ header{
     text-shadow: 2px 1px 10px rgb(7, 32, 59);
     font-family: monospace;
     font-variant: small-caps;
-    font-size: 1.4em;
-   
+    font-size: 1.4em;   
 }
 header>p{
     margin:0;
@@ -23,18 +21,18 @@ nav{
     list-style: none;
     display: flex;
     justify-content: center;
-    padding: 0px 100px !important;
-  
+    padding: 0px 100px !important;  
 }
-
+label{
+    margin: 5px;
+}
 
 body{
     background-color: rgb(244, 228, 200);
-    margin:50px 50px 0px 50px;
+    margin:0px ;
     font-variant: small-caps;
     text-align: center;
 /* CONSEGUIR FOOTER AL FINAL BODY con FLEX; MINIMO altura PANTALLA 100vh*/
-    display:flex;
     flex-direction: column;
     min-height: 100vh;
    
@@ -43,28 +41,40 @@ body{
 li{
     font-weight:600;
 }
+/*FORMULARIO GENERAL */
 form{
-    background-color: rgb(245, 252, 251)!important;
-    border-color: black;
+    background-color: rgb(190, 227, 221)!important;
+    border-color: rgb(10, 57, 37);
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
-    padding:10px;
+    padding:10px;    
+}
+.formFiltro {
+    height:330px !important;
+    width: 220px;
+    float: left;
+    margin-left: 30px;
     
+
 }
 
-div.formUsuario {       
-    left:40px;      
-    margin:0px;
-    padding: 10px;
-    position: absolute;
-    width: 250px;  
-    height:700px;   
-   
+.error{
+    color:black;
+    background:linear-gradient( rgb(249, 92, 92),rgb(245, 221, 221)) ;
+    border-radius: 20px;
+    margin: 0px auto;
+    padding:5px 16px;
+   position: relative;
+   width: 220px;
+   align-items: center;   
+}
+input.form-control{   
+    font-size: 0.9em;
 }
 
-div.formLoggin {   
-
+/*FORMULARIO LOGIN */
+.formLoggin {  
     /* FLEXBOX IMAGENES*/
     display: flex;
     flex-direction: row;
@@ -74,47 +84,43 @@ div.formLoggin {
     margin: 5px auto;
     
     width:350px;
-    height:auto;
-    
+    height:auto;    
 } 
-div.formLoggin>form{
-    width: 320px;
-    color: rgb(159, 4, 4);
-}
 
-.formFiltro {
-    height:280px !important;
-    width: 220px;
-    position: absolute;
-
-}
-.error{
-    color:black;
-    background:linear-gradient( rgb(249, 92, 92),rgb(245, 221, 221)) ;
-    border-radius: 20px;
-    margin: 0px auto;
-    padding:5px 16px;
-   position: relative;
-   width: 220px;
-   align-items: center;
+/*FORMULARIO INFO PERFIL */
+.formInfo{
+    display: inline-block;
+    width:350px;
+    
    
 }
-input.form-control{
-   
-    font-size: 0.9em;
-}
+/* unused perfil
+.info{
+    float:left;
+    width:300px;
+}*/
 .cuadro{
     background-color:  rgb(58, 167, 171);
     color: white;
     border-radius: 10px;    
     padding: 5px;
 }
-.link{
-    color:white;
+a.link{
+    color:rgb(195, 227, 175);
    font-style: oblique;
     font-weight: bold;
    
 }
+/*FORMULARIO CREAR USUARIO */
+div.formUsuario {       
+    float:left;   
+    margin:0px;
+    padding: 10px;
+    margin-left: 30px;
+    width: 250px;  
+        
+}
+/*IMAGENES INDEX */
 .imagenes{
     /* FLEXBOX IMAGENES*/
     display: flex;
@@ -122,16 +128,13 @@ input.form-control{
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-    
-    width:auto;
-    height:auto;
-    position: relative !important;
-    left:230px;
-    margin-right:220px;
+    margin:20px;
     
 }
-.imagenes> p{
-    width: 800px;
+.imagenes>p{
+    width: 1000px;
+   
+    padding:30px 30px;
 }
 .imagen{
     float: left;
@@ -140,7 +143,7 @@ input.form-control{
     height:200px;
 }
 .card-body{
-    font-size: 0.9em;;
+    font-size: 0.9em;
 
 }
 .btn.btn-primary{
@@ -152,6 +155,12 @@ input.form-control{
     padding:3px;
 }
 
+
+div.publicaAnimal{
+    display: inline-block;
+    width:500px;
+    margin-left: 20px;
+}
 
 #footer{
    

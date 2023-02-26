@@ -14,26 +14,30 @@
     <header>        
         
     </header>
-
-    <!--Bootstrap NAV-->
-<nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/puppy1.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-       
-            <li><a href="busco.html" id="busco"> Busco a mi mascota </a>  </li>      
-            <li><a href="encontrado.php" id="encontrado"> He encontrado una mascota </a> </li> 
-            <li><a href="ayudar.html" id="ayudar">Quiero colaborar acogiendo/adoptando </a> </li> 
-      
-      </a>
-    </div>
-  </nav>
+    <?php 
+    include "crearUsuario.php";
+   include "nav.php";
+   ?>
 
   <main>
     <!--FILTRO ANIMALES -->
     
         <form  class="formFiltro" action="#" method="post">
             <p class="text-black">Filtra por características:</p>
+            <div class="input-group mb-2">
+                <label>TIPO  
+                <select name="tipo"> 
+                <option selected value="perro">perro</option>
+                <option  value="dato">gato</option>
+                </select>    </label>
+           
+                <label>TAMAÑO: 
+                <select name="tamaño"> 
+                <option  value="pequeño">pequeño</option>
+                <option selected value="mediano">mediano</option>
+                <option  value="grande">grande</option>                    
+                </select>    </label>
+            </div>
             <div class="input-group mb-2">
                 <input type="text" name="buscaColor" placeholder="Color:" class="form-control"
                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

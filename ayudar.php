@@ -13,19 +13,11 @@
     <header> 
     </header>  
         
+    <?php 
+    include "crearUsuario.php";
+   include "nav.php";
+   ?>
 
-    <!--Bootstrap NAV-->
-<nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/puppy1.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-       
-            <li><a href="busco.html" id="busco"> Busco a mi mascota </a>  </li>      
-            <li><a href="encontrado.php" id="encontrado"> He encontrado una mascota </a> </li> 
-            <li><a href="ayudar.html" id="ayudar">Quiero colaborar acogiendo/adoptando </a> </li> 
-      </a>
-    </div>
-  </nav>
     <main>
       <div class="entradaAcogida">
         <p>
@@ -36,6 +28,7 @@
             Algunos son recién rescatados que no conocen lo que es vivir en una vivienda, que son mayores, o que acaban de salir de un problema veterinario y necesitan mayor confort. <br>
             Puedes ayudarles acogiendo o adoptando!
         </p> 
+       
       </div>
     </main>
 </body>
