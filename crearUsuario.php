@@ -27,7 +27,7 @@
 
              };
          }catch(Exception $e){
-            echo ("<p class='error'>ya has creado un Usuario</p>");
+            echo ("<p class='error'>Ha habido algún error</p>");
          }
         };   
     
@@ -47,13 +47,13 @@ function crearUsuario($nombre,$apellido,$correo,$pw,$protectora,$nombreP){
 };
 /**
 * *VALIDA Y CREA COOKIE
-* 
+* !FUNCIONES LOGGIN/ ENCONTRADO.PHP
 */    
 function validaLoggin(){ 
    if(isset($_POST['submitLoggin'])){
     
 
-    $pers=(Login($_POST['correo'],$_POST['pw']));    
+    $pers=(Loggin($_POST['correo'],$_POST['pw']));    
     setcookie("datos",$pers,time()+2000, "/" );
     
     }
@@ -63,7 +63,7 @@ function validaLoggin(){
    * 
    * 
    */
- function Login($correo, $pw){
+ function Loggin($correo, $pw){
     $con=crearConexion();
     $query="SELECT correo, pw from usuarios where correo='$correo' and pw='$pw' ";
     $resultado=mysqli_query($con, $query);
@@ -77,7 +77,7 @@ function validaLoggin(){
         }else if ($datos= mysqli_fetch_array($resultado)){ 
             //si COOKIES "DATOS" es = resultado:
             //DEVUELVE $CORREO QUE SERA LO QUE USAREMOS 
-            echo(" Bienvenido $correo <br> <a href='perfil.php'>Accede al perfil <a><br>");            
+            echo(" Bienvenido $correo <br> <a href='encontrado.php'>Publica AQUI <a><br>");            
              
              return $correo;  
 
@@ -90,8 +90,17 @@ function validaLoggin(){
         echo ("error");
     };  
 }
+function guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo){
+    $con=crearConexion(); 
+    $query="INSERT INTO animales (tipo,tamaño,raza,color,cc,ciudad,info,correo) VALUES ('$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";
+    $resultado=mysqli_query($con,$query);
+    cerrarConexion($con);  
+    
+    return $resultado;
+}
+
 /**
- * !funcion datos usuarios
+ * !funciones PERFIL
  */
 
 function datosUsuario(){    
@@ -113,7 +122,7 @@ function datosUsuario(){
 }
 
 /**
- * !GUARDAMOS INFO CON UPDATE
+ * !
  */
 
 function  guardarInfo(){
@@ -128,14 +137,6 @@ function  guardarInfo(){
 
 }
 
-function guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo){
-    $con=crearConexion(); 
-    $query="INSERT INTO animales (tipo,tamaño,raza,color,cc,ciudad,info,correo) VALUES ('$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";
-    $resultado=mysqli_query($con,$query);
-    cerrarConexion($con);  
-    
-    return $resultado;
-}
 
 
 ?>

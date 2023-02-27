@@ -20,7 +20,7 @@
                 <li><a href="busco.php" id="busco"> Busco a mi mascota </a>  </li>      
                 <li><a href="encontrado.php" class="encontrado"> He encontrado una mascota </a> </li> 
                 <li><a href="ayudar.php" id="ayudar">Quiero acoger o adoptar </a> </li> 
-                <li><a href="encontrado.php" class="encontrado">Perfil </a> </li> 
+                <li><a href="perfil.php" class="encontrado">Perfil </a> </li> 
           </a>
         </div>
     </nav>

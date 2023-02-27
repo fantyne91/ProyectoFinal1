@@ -26,24 +26,7 @@ include "nav.php";
 
  if(!empty($_COOKIE['datos'])){
       
-    echo "
-    <div class='formInfo'>
-     <form action='#' method='POST'>
-       <p> Aquí podras añadir tus datos para que puedan contactarte. <br>    
-         <b>Escribe los datos que consideres sobre ti o tu organización.</b></p>
-       
-           <div class='mb-3'>                       
-                <textarea class='form-control' name='info' maxlength='320' id='exampleFormControlTextarea1' rows='3'></textarea>
-                <button type='submit' name='submitInfo' >Guardar</button>
-           </div>
-       </form>";
-
-     //si hacemos submit info 
-    if(isset($_POST['submitInfo'])) {
-       guardarInfo();
-    }
-    //PINTAMOS DESPUËS PARA QUE RECARGE
-    datosUsuario();
+   
 ?>
     </div>
 
@@ -122,6 +105,9 @@ include "nav.php";
                     <button type='submit'  name='submitLoggin' class='btn btn-primary btn-sm'>Acceder</button>
              </form>          
          </div> ");
+
+        //  if isset(['submitLogin']) {
+        //  }
         
     }    
 ?>
