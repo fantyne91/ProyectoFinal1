@@ -12,7 +12,7 @@
 
 <body>    
 <header> 
-       
+       <p>Publica la mascota encontrada:</p>
 </header> 
 <?php 
 include "crearUsuario.php";
