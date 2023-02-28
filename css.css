@@ -102,11 +102,13 @@ input.form-control{
 .cuadro{
     background-color:  rgb(58, 167, 171);
     color: white;
-    border-radius: 10px;    
+    border-radius: 10px;   
+    max-width: 320px; 
     padding: 5px;
+    display: inline-block;
 }
 a.link{
-    color:rgb(195, 227, 175);
+    color:rgb(215, 244, 189);
    font-style: oblique;
     font-weight: bold;
    

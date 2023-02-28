@@ -77,7 +77,7 @@ function validaLoggin(){
         }else if ($datos= mysqli_fetch_array($resultado)){ 
             //si COOKIES "DATOS" es = resultado:
             //DEVUELVE $CORREO QUE SERA LO QUE USAREMOS 
-            echo(" Bienvenido $correo <br> <a href='encontrado.php'>Publica AQUI <a><br>");            
+            echo("<p class='cuadro'> Bienvenido $correo <br> <a href='encontrado.php' class='link'>Publica AQUI <a></p>   <br>");            
              
              return $correo;  
 

@@ -20,15 +20,21 @@ include "nav.php";
 
       /**
        * *LLAMAMOS FUNCION LOGIN CON DATOS DEL POST
-      * 
+      * todo : acceder directamente  "publica"
       */  
-      validaLoggin();
 
- if(!empty($_COOKIE['datos'])){
+      
+
+      if (isset($_POST['submitLoggin'])) {
+        validaLoggin();
+      }   
+     
+
+ if(isset($_COOKIE['datos'])){
       
    
 ?>
-    </div>
+   
 
     <div class='publicaAnimal'>
 
@@ -106,10 +112,11 @@ include "nav.php";
              </form>          
          </div> ");
 
-        //  if isset(['submitLogin']) {
-        //  }
+         
         
     }    
+
+   
 ?>
       
 </body>
