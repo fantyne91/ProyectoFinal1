@@ -1,12 +1,15 @@
 <?php
     include "conexion.php";  
+ 
 
-     static $nombre;
-     static $apellido;
-     static $correo;
-     static $pw;
-     static $nombreP;
-     static $info;
+    static $nombre;
+    static $apellido;
+    static $correo;
+    static $pw;
+    static $nombreP;
+    static $info;
+
+  
    
 
     if (isset($_POST['submitCrear'])) {
@@ -47,6 +50,7 @@ function crearUsuario($nombre,$apellido,$correo,$pw,$protectora,$nombreP){
 };
 /**
 * *VALIDA Y CREA COOKIE
+* todo: js, valide input patrones regex
 * !FUNCIONES LOGGIN/ ENCONTRADO.PHP
 */    
 function validaLoggin(){ 
@@ -54,7 +58,7 @@ function validaLoggin(){
     
 
     $pers=(Loggin($_POST['correo'],$_POST['pw']));    
-    setcookie("datos",$pers,time()+2000, "/" );
+    return $pers;
     
     }
 }  
@@ -77,8 +81,8 @@ function validaLoggin(){
         }else if ($datos= mysqli_fetch_array($resultado)){ 
             //si COOKIES "DATOS" es = resultado:
             //DEVUELVE $CORREO QUE SERA LO QUE USAREMOS 
-            echo("<p class='cuadro'> Bienvenido $correo <br> <a href='encontrado.php' class='link'>Publica AQUI <a></p>   <br>");            
-             
+
+
              return $correo;  
 
         }else{ 
@@ -89,55 +93,37 @@ function validaLoggin(){
     }catch(PDOException $e){
         echo ("error");
     };  
+
 }
+//cambiar BD tipo fecha A/M/D
+/**
+ * todo: como filtrar y mostrar imagen segun filtro. CON JS?
+ */
 function guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo){
+//insertar imagen:
+    $nombre_imagen=$_FILES['insertarImagen']['name'];
+    $temporal=$_FILES['insertarImagen']['tmp_name'];
+    $carpeta= 'vista/img/publicados';
+    $ruta= $carpeta. '/' . $nombre_imagen;
+    move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
+
     $con=crearConexion(); 
-    $query="INSERT INTO animales (tipo,tamaño,raza,color,cc,ciudad,info,correo) VALUES ('$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";
+    $query="INSERT INTO animales (foto,tipo,tamaño,raza,color,cc,ciudad,info,correo) 
+            VALUES ('$ruta','$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";
     $resultado=mysqli_query($con,$query);
     cerrarConexion($con);  
     
     return $resultado;
 }
 
-/**
- * !funciones PERFIL
- */
-
-function datosUsuario(){    
-   $correo=$_COOKIE['datos'];
+function mostrarAnimal($color, $ciudad){
     $con=crearConexion();
-    $query="SELECT nombre,apellido,correo,nombreP,info from usuarios where correo= '$correo' ";
-    $resultado=mysqli_query($con, $query);
-    cerrarConexion($con); 
-   
+    $query= "SELECT foto FROM animales where color LIKE '$color' and ciudad LIKE '$ciudad'";
+    $resultado=mysqli_query($con,$query);
+
+    cerrarConexion($con);  
     
-    while ($fila = mysqli_fetch_assoc($resultado)){
-        echo ("<b>Nombre: " . $fila['nombre'].
-        "<br>Apellido: " . $fila['apellido'].
-        "<br> Correo: ".$fila['correo'].
-        "<br>Protectora: ".$fila['nombreP'].
-        "<br>Info: ".$fila['info']."</b>");
-    };     
     return $resultado;
 }
-
-/**
- * !
- */
-
-function  guardarInfo(){
-    $info=$_POST['info'];
-    $correo=$_COOKIE['datos'];
-
-    $con=crearConexion();
-    $query="UPDATE usuarios SET info='$info'  WHERE correo = '$correo'";
-    $resultado=mysqli_query($con, $query);
-    cerrarConexion($con);    
-    return $resultado;
-
-}
-
-
-
 ?>
 

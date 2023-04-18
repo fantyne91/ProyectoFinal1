@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- incluimos bootsatrap en css y java-->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" >
-    <link rel="stylesheet" href="css.css" type="text/css">
-    <title>Busco mascota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <title>Pet Finder</title>    
 </head>
 
 <body>
-    <header>        
-        
-    </header>
+
     <?php 
-    include "crearUsuario.php";
-   include "nav.php";
+    
+   include "funciones/funciones_busqueda.php";
+   include "vista/nav.php";
    ?>
 
   <main>
+  <p> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
+            Recuerda que puedes filtrar por Ciudad, o rasgos del animal. </p>
+      
+  <form  class="formFiltro" action="#" method="post">
+    <button type='submit' name='muestraFiltro'>Filtrar</button>
     <!--FILTRO ANIMALES -->
-    
-        <form  class="formFiltro" action="#" method="post">
-            <p class="text-black">Filtra por características:</p>
+    <?php
+     if(isset($_POST['muestraFiltro'])){
+
+     ?>       
+        
             <div class="input-group mb-2">
                 <label>TIPO  
                 <select name="tipo"> 
                 <option selected value="perro">perro</option>
                 <option  value="dato">gato</option>
+                <option  value="otros">otros</option>
                 </select>    </label>
            
                 <label>TAMAÑO: 
-                <select name="tamaño"> 
-                <option  value="pequeño">pequeño</option>
+                <select name="tamano"> 
+                <option  value="pequeno">pequeño</option>
                 <option selected value="mediano">mediano</option>
                 <option  value="grande">grande</option>                    
                 </select>    </label>
@@ -56,12 +60,13 @@
             </div>
             <button type="submit" name="buscarAnimal" class="btn btn-primary btn-sm">Buscar</button>
         </form>
-    
+     <?php   
+    } 
+    ?>
          <!--IMAGENES ULTIMOS PERDIDOS -->
+        
     <div class="imagenes">
-        <p> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
-            Recuerda que puedes filtrar por Ciudad, o rasgos del animal. </p>
-      
+       
 
         <div class="imagen">
             <div class="card" style="width: 13rem;">
