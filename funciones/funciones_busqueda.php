@@ -1,46 +1,60 @@
 <?php
- include "conexion.php";
-
- $tipo;
-  $tamano;
-  $raza;
- $color;
-  $cc;
-  $ciudad;
-
- if (isset($_POST['buscarAnimal'])){
-    $tipo=$_POST['tipo'];
- $tamano=$_POST['tamano'];
- $raza=$_POST['buscaRaza'] ;
- $color=$_POST['buscaColor'];
- $cc=$_POST['buscaCC'];
- $ciudad=$_POST['buscaCiudad'];
+ include "consultas.php";
+session_start();
 
 
- function animales($tipo,$tamano,$raza,$color,$cc,$ciudad){
+// if (isset($_POST)){
+//     foreach($_POST as $post){
+//         echo  $post;
+//     }
+    
+// }
+/**FILTRAR Y MOSTRAR ANIMALES  */
+ function filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad){
 
-    $con=crearConexion(); 
-    $query="SELECT tipo,tamaño,raza,color,cc,ciudad FROM animales  
-            where tipo LIKE '$tipo' AND tamaño= LIKE '$tamano'AND raza LIKE '$raza' AND color LIKE '$color' AND cc LIKE '$cc' AND ciudad LIKE '$ciudad'";
-    $resultado=mysqli_query($con,$query);
-    cerrarConexion($con);  
+    $query="SELECT foto,tipo,tamaño,raza,color,cc,ciudad FROM animales WHERE tipo LIKE '%{$tipo}%' AND tamaño LIKE '%{$tamano}%' ";                   
 
-    if ($resultado) {
+             if (isset($_POST['buscaRaza'])){
+   
+                $query=$query." AND raza LIKE '%{$_POST['buscaRaza']}%'";
+             } 
+             if (isset($_POST['buscaColor'])){
+   
+                $query=$query." AND color LIKE '%{$_POST['buscaColor']}%'";
+             }  
+             if (isset($_POST['buscaCC'])){
+   
+                $query=$query." AND cc LIKE '%{$_POST['buscaCC']}%'";
+             }  
+             if (isset($_POST['buscaCiudad'])){
+   
+                $query=$query." AND ciudad LIKE '%{$_POST['buscaCiudad']}%'";
+             }  
+             
+    
+    $resultado = crearConexion()->query($query);
 
-        /* obtener array asociativo */
-        while ($datos= mysqli_fetch_array($resultado)) {
-          //  printf ("%s (%s)\n", $row["tipo"],$row["tamano"],$row["raza"], $row["color"],$row["cc"],$row["ciudad"]);
-          echo $datos;
-        }
-    }   
-    return $resultado;
-}
+    
+      foreach ( $resultado as $datos) {
+     ?>     
+     
+      <div class="imagen">
+      <div class="card" style="width: 12rem;">
+          <img src="<?php echo $datos['foto']; ?>" class="card-img-top" alt="" height="120px" width="100px">
+  
+          <div class="card-body">
+              <h5 class="card-title"><?php echo $datos['ciudad']; ?></h5>                
+              <a href="#" class="btn btn-primary">Go </a>
+          </div>
+      </div>
+      </div>
+  <?php
+  }         
+      
+  return $resultado;    
+  }
 
-animales($tipo,$tamano,$raza,$color,$cc,$ciudad);
- 
- }
 
- 
- 
+
 
  ?>

@@ -1,1 +1,5 @@
-console.log (phpinfo());
+<?php
+echo 
+
+
+?>
