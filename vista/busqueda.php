@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-    <title>Pet Finder</title>    
-</head>
 
 <body>    
     <?php     
-    
    include "nav.php"; 
-   include "../funciones/funciones_busqueda.php"; 
+   include "../funciones/funciones_procesarForm.php"; 
    ?>
-   <p> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
-            Recuerda que puedes filtrar por Ciudad, o rasgos del animal. </p>
+
+   <p class="entrada"> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
+            Recuerda que puedes filtrar por Ciudad, o rasgos del animal.</p>
     <div>
        <main>
    

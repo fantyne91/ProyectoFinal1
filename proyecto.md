@@ -14,3 +14,9 @@ Los usuarios a través de la barra de navegación podrán acceder a diferentes i
 *Hacer Login
 *Acceder al Perfil y modificar información
 *Añadir animales e imagenes de ellos.
+
+
+
+todo:
+ no afecte mayuscula y minuscula a los forms
+

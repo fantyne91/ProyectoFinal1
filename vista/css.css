@@ -1,3 +1,4 @@
+
 /*GENERALES*/
 header{    
     height:110px ;     
@@ -10,25 +11,27 @@ header>h1{
     margin:0;
     font-size: 60px;    
     font-family: serif;   
-    color:#305c93  ;
+    color:#2c61a2  ;
 }
 nav{
     margin-bottom: 70px;   
     list-style: none;   
     padding: 0px 100px !important;  
     box-shadow: 4px 0px 4px 2px #3C6CA8;  
+    
     width: 100%;     
 }
+
 main{
-    display: flex;
-    
-    justify-content: center;
-    
+    display: flex;   
+    flex-wrap: wrap; 
+    justify-content: center;    
 }
 .entrada{    
-    margin:0px 100px;
-      display: inline-block;  
-  }
+    padding:0px 100px 30px 100px;
+   width: 100%; 
+   display: inline-block;
+}
   
 a.link{
     color:rgb(227, 242, 214);
@@ -44,10 +47,12 @@ body{
     font-variant: small-caps;
     text-align: center;
     /* CONSEGUIR FOOTER AL FINAL BODY con FLEX; MINIMO altura PANTALLA 100vh*/
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     min-height: 100vh;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important; 
-    color: #21446f ;  
+    color: #21518b  ;  
 }
 li{
     font-weight:600;
@@ -80,14 +85,13 @@ input.form-control{
     font-family: inherit;
 }
 
-
 /*INDEX FORMULARIO CREAR USUARIO */
 .formUsuario {       
     float:left;   
     margin:0px;
     padding: 10px;
     margin-left: 22px;
-    width: 40%;   
+    width: 30%;   
     display: flex;  
     flex-direction: column;
 }
@@ -95,8 +99,7 @@ input.form-control{
     background-color:#3C6CA8;
     color: white;
     font-size:0.9em;
-    border-radius: 10px;   
-    max-width: 320px; 
+    border-radius: 10px;     
     padding: 5px;
     display: inline-block;
 }
@@ -108,8 +111,8 @@ input.form-control{
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-    margin:0px 13px; 
-   
+    margin:0px 13px;   
+    min-height: 50vh;
 
 }
 .imagen{
@@ -134,8 +137,7 @@ input.form-control{
 /*BUSCO*/
 .formFiltro {
     float: left;
-    margin-left: 30px;
- 
+    margin-left: 30px; 
 }
 
 /*PUBLICAR*/
@@ -160,7 +162,7 @@ div.publicaAnimal{
 }
 .avisoAnimal{    
     color:white;
-    background-color: rgb(60, 108, 168,0.8);
+    background-color: rgba(46, 93, 150, 0.8);
     padding: 15px;
     border-radius: 30px;
 }
@@ -173,8 +175,7 @@ div.publicaAnimal{
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
-  }
-  
+}  
 .contenido-ventana {
     background-color: #d1ebec;
     margin: 15% auto;
@@ -189,9 +190,10 @@ div.publicaAnimal{
     width:400px;    
     float:left;
 }
-.formInfo{
+.info{
     display: flex;
-    margin-left: 100px;
+    margin: 0px 20px;
+    width: 100%;
 }
 
 /*VISTA ANIMAL*/

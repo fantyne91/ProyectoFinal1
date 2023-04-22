@@ -5,52 +5,24 @@
 <?php
 
 include "nav.php";
-include "../funciones/funciones_publicar.php";
-
-
-      /**
+include "../funciones/funciones_procesarForm.php";
+?>
+      <!-- /**
       * *LLAMAMOS FUNCION LOGIN CON DATOS DEL POST
       * todo : acceder directamente  "publica"
-      */               
-if ($_SESSION['sesion']==false) {
-    echo ("<div style='background-color:rgb(60, 108, 168,0.8)'> <a style='color:white' href='../vista/perfil.php'> Aquí puedes acceder a tu cuenta </a> </div> <br>. "); 
-    unset($_SESSION['sesion']); 
-}   
-if (!isset($_COOKIE['datos'])) {        
+      */     -->
+
+<div style='background-color:rgba(46, 93, 150, 0.8)'> <a style='color:white' href='../vista/perfil.php'> Aquí puedes acceder a tu perfil. </a> </div> <br>
        
-        echo("<div>
-        
-        <form  class='formLoggin' action='publicar.php' method='post'>
-    
-        <br> <p> Para publicar haz Login o  <a href='index.php'>crea una cuenta: </a></p>
-                    <label>Haz loggin:</label>
-                    <div class='input-group mb-2'>                
-                       <input type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-                    </div>                
-                    <div class='input-group mb-2'>                 
-                       <input type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-                    </div>
-                    <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
-             </form>          
-         </div> ");     
-        /**
-         * ! header()
-         */
-        if (validaLogin()){
-            setcookie("datos",$_POST['correo'],time()+2000, "/" );
-            header("Location: publicar.php");
-        }  
-}    
-    
- if(isset($_COOKIE['datos'])){
+<?php if(isset($_COOKIE['datos'])){   ?>
   
-    echo " <div class='publicaAnimal'>
+    <div class='publicaAnimal'>
 
     <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su dueño!</p>
 
     <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
             
-                   <p><b> Introduce los datos que puedas del animal encontrado:</b></p>
+          <p><b> Introduce los datos que puedas del animal encontrado:</b></p>
               
                <div  style='justify-content:center' class='input-group mb-2' style=''>
                   <label>TIPO: 
@@ -74,14 +46,14 @@ if (!isset($_COOKIE['datos'])) {
                    <input type='text' name='raza' placeholder='RAZA' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                
-                  <input type='text' name='color' placeholder='COLOR' class='form-control'
+                  <input required type='text' name='color' placeholder='*COLOR' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                </div>          
                <div class='input-group mb-2'>
                   <input type='text' name='cc' placeholder='COMUNIDAD AUTONOMA' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                   
-                  <input type='text' name='ciudad' placeholder='CIUDAD' class='form-control'
+                  <input required type='text' name='ciudad' placeholder='*CIUDAD' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                </div>  
        
@@ -91,8 +63,7 @@ if (!isset($_COOKIE['datos'])) {
                </div>
              </form> 
         </div>";
-} 
-?>
+<?php  }   ?>
 
 <script>
  const btnAbrirModal = document.getElementById('submitAnimal');

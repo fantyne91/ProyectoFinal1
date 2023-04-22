@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>   
-    <title>Pet Finder</title>    
-</head>
 
 <body>
+
 <?php
-include "../funciones/funciones_perfil.php";
-include "nav.php";;
+include "nav.php";
+include "../funciones/funciones_procesarForm.php";
 
+?>
 
-if(!empty($_COOKIE['datos'])){ 
-      
-      echo "
-      <div class='formInfo'>
-       <form action='#' method='POST'>
-         <p> Aquí podras añadir tus datos para que puedan contactarte. <br>    
-           <b>Introduce el medio donde quieres que te contacten: telefono o e-mail.</b></p>
-         
-             <div class='mb-3'>                       
-                  <textarea class='form-control' name='info' maxlength='320' id='exampleFormControlTextarea1' rows='3'></textarea>
-                  <button type='submit' name='submitInfo' >Guardar</button>
-             </div>
-         </form>";  
-
-    /**
-     * si hacemos submit info 
-     * ! PONER EN PARALELO
-     */
-      if(isset($_POST['submitInfo'])) {
-         guardarInfo();
-      }
-      //PINTAMOS DESPUËS PARA QUE RECARGE
-      datosUsuario();
-
-    }else{
-        echo" <a href='encontrado.php'> Clica aquí para acceder a tu cuenta</a>";
-    }
-  ?>
+<?php if(!empty($_COOKIE['datos'])){ ?> 
+   
+<div style='background-color:rgb(60, 108, 168,0.8);color:white'>el método de contacto con los demás usuarios será el correo electrónico proporcionado, recuerda revisarlo</div><br>
+<main> 
+      <div class='entrada'>
+        <h1>tus datos:</h1> 
+          <?php  if (datosUsuario()){    ?>
+            <button id="cerrar_sesion" name='cerrar_sesion'>Cerrar sesión</button>
       </div>
+      <div class="input-group mb-2">
+                    <label>Eres una Asociación? </label>
+                    <select id="protectora" name="protectora" onclick=>
+                    <option id="protectora_si" value="si" onclick="datos_protectora()">Si</option>
+                    <option selected value="no">No</option>
+                    </select>      
+                      
+                    <input type="text" name="nombreP" placeholder="asociación" class="form-control"
+                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <button type="submit" name="submit_asociacion" class="btn btn-primary">Crear</button>
+                    </div>    
+</main> 
+      <br>
+      <h1> tus mascotas publicadas:</h1>  
+          <div class='imagenes'>                    
+              <?php consulta_usuarioAnimal($_COOKIE['datos']); }?>           
+          </div>
+
+<!-- SI NO TIENE COOKIE MUESTRA LOGIN: var_dump( $_SESSION['sesion']);  -->
+  <?php    }else{ 
+
+      echo" <div>        
+              <form  class='formLoggin' action='#' method='post'>     <br>
+               <p> Para publicar <a href='index.php'>crea una cuenta</a> o  haz Login:</p>
+                          <label>Haz loggin:</label>
+                          <div class='input-group mb-2'>                
+                             <input required type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+                          </div>                
+                          <div class='input-group mb-2'>                 
+                             <input required type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+                          </div>
+                          <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
+                </form>          
+               </div> ";     
+  }
+  ?>
+  <script>
+    var cerrarSesion = document.getElementById("cerrar_sesion");
+
+// Agregar un evento de clic al botón
+cerrarSesion.addEventListener("click", function() {
+  // Eliminar la variable de sesión o la cookie que indica que el usuario ha iniciado sesión
+  // redirigir a la página de inicio de sesión o a la página principal
+  window.location.href = "../funciones/cerrar_sesion.php";
+});
+  </script>
+  </body>
+  </html>
+      

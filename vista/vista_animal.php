@@ -1,7 +1,7 @@
 <?php
 
 include "nav.php";
-include "../funciones/consultas.php";
+include "../funciones/funciones_procesarForm.php";
 
 // Obtener el ID del animal de la URL
 $id_animal = $_GET['id_animal'];
@@ -24,13 +24,17 @@ if (mysqli_num_rows($resultado) > 0) {
     echo "<p>Contacto: " . $fila['correo'] . "</p>";
 	echo "<p>Información: " . $fila['info'] . "</p></div>
         </div>";
+	echo"<div>Información de la protectora:</div>";
 	
 
 } else {
 	echo "Animal no encontrado";
 }
 
-
+/*
+crear nueva  tabla protectoras_ciudad
+*ingresando en nueva tabla ciudad y nombre y ID(foraneo?)
+*/
 
 
 
