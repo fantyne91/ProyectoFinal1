@@ -14,7 +14,7 @@ include "../funciones/funciones_procesarForm.php";
 
 <div style='background-color:rgba(46, 93, 150, 0.8)'> <a style='color:white' href='../vista/perfil.php'> Aquí puedes acceder a tu perfil. </a> </div> <br>
        
-<?php if(isset($_COOKIE['datos'])){   ?>
+<?php if(isset($_COOKIE['datos'])){  var_dump($_SESSION['nombreP'])  ?>
   
     <div class='publicaAnimal'>
 
@@ -56,6 +56,7 @@ include "../funciones/funciones_procesarForm.php";
                   <input required type='text' name='ciudad' placeholder='*CIUDAD' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                </div>  
+              
        
                <div class='mb-3'>  
                        <textarea class='form-control' name='infoA' maxlength='320' id='exampleFormControlTextarea1' rows='3' placeholder='DESCRIBE CUANDO Y DONDE LO ENCONTRASTE...'></textarea>

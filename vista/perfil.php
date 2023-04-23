@@ -19,16 +19,15 @@ include "../funciones/funciones_procesarForm.php";
             <button id="cerrar_sesion" name='cerrar_sesion'>Cerrar sesión</button>
       </div>
       <div class="input-group mb-2">
-                    <label>Eres una Asociación? </label>
-                    <select id="protectora" name="protectora" onclick=>
-                    <option id="protectora_si" value="si" onclick="datos_protectora()">Si</option>
-                    <option selected value="no">No</option>
-                    </select>      
+                    <form action= '#' method='post'><label>Eres una Asociación? </label>
+                    
                       
                     <input type="text" name="nombreP" placeholder="asociación" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     <button type="submit" name="submit_asociacion" class="btn btn-primary">Crear</button>
-                    </div>    
+          </form>
+                    </div>  
+        
 </main> 
       <br>
       <h1> tus mascotas publicadas:</h1>  

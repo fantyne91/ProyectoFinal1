@@ -15,9 +15,8 @@ function consulta_crearUsuario($nombre,$apellido,$correo,$pw){
     /*La variable $persona almacenará el email del objeto de clase persona para reutilizarlo en sql insert usuario_animal
      */  
      
-   
     return $resultado;    
-}; 
+}
 
 
 function consulta_login($correo, $pw){
@@ -54,6 +53,17 @@ function datosUsuario(){
     }    
     return $resultado;
 }
+//añadir dato en objeto Persona con set()
+  function set_protectora($nombreP){
+    $_SESSION['nombreP'] = $nombreP;
+    $correo=$_COOKIE['datos'];
 
-  
+    $conexion=crearConexion();
+    //$query1="INSERT INTO protectora_animal (nombreP) VALUES ('$nombreP')";
+    $query2="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$correo'";
+    $resultado1 = $conexion->query($query2);
+    //$resultado2 = $conexion->query($query2);
+    
+    return true;
+  }
 ?>

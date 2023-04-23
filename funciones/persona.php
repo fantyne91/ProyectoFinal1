@@ -6,22 +6,21 @@ class Persona {
     private $nombre;
     private $apellido;
     private $correo;
-    private $pw;
-    private $protectora;
+    private $pw;  
     private $nombreP;
     
 /** 
  * todo: pendiente poder modificar email?
 */
-    public function __construct($nombre,$apellido,$correo,$pw,$protectora,$nombreP) {
+    public function __construct($nombre,$apellido,$correo,$pw,$nombreP) {
         $this->nombre=$nombre;
         $this->apellido=$apellido;
         $this->correo=$correo;
-        $this->pw=$pw;
-        $this->protectora=$protectora;
+        $this->pw=$pw;        
         $this->nombreP=$nombreP;
         
     }
+    
 
     public function getNombre() {
         return $this->nombre;
@@ -44,7 +43,9 @@ class Persona {
     public function getEmail() {
         return $this->correo;
     }
+    // setProtectora(){
 
+    // }
    
 }
 ?>

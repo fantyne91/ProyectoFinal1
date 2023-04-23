@@ -7,7 +7,7 @@ $id;
 /**
  * todo: hacer tabla ciudad id, para luego consulta por ciudades. 
  */
-function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo){
+function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo,$nombreP){
     //insertar imagen:
         $nombre_imagen=$_FILES['insertarImagen']['name'];
         $temporal=$_FILES['insertarImagen']['tmp_name'];
@@ -17,17 +17,20 @@ function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$c
         
         $conexion=crearConexion();
         $query="INSERT INTO animales (foto,tipo,tamaño,raza,color,cc,ciudad,info,correo) 
-                VALUES ('$ruta','$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";
-       
-        $resultado=$conexion->query($query);        
+                VALUES ('$ruta','$tipo','$tamaño','$raza','$color','$cc','$ciudad','$info','$correo')";        
+        $resultado=$conexion->query($query);
+        
         global $id;
         $id = $conexion->insert_id;
+
+        
         /** incluimos en la tabla animal_usuario si obtenemos la ID recien creada en BD*/
-        // if ($id){
-        //     $query="INSERT INTO animal_ciudad (id,ciudad) 
-        //     VALUES ('$id','$ciudad')";
-        //     $resultado=crearConexion()->query($query);            
-        // }
+        if ($id){
+             $query2="INSERT INTO protectora_animal (id,nombreP) VALUES ('$id','$nombreP')";
+             $resultado=$conexion->query($query2);          
+        }
+        
+        $conexion=cerrarConexion( $conexion);
         return $resultado;
 }
 /**

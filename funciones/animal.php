@@ -9,9 +9,10 @@ class Animal{
     public $infoA;
     public $correo;
     public $fecha;
+    public $nombreP;
 
    // Declaración de un método $tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA
-    public function __construct($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo) {
+    public function __construct($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo,$nombreP) {
          $this->tipo=$tipo;
          $this-> tamano=$tamano;
          $this-> raza=$raza;
@@ -21,6 +22,7 @@ class Animal{
          $this-> infoA=$infoA;
          $this-> correo=$correo;
         $this->fecha =date("d-m-Y");
+        $this-> nombreP=$nombreP;
     }
     
     public function get_animal(){
