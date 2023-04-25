@@ -9,17 +9,12 @@
 
    <p class="entrada"> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
             Recuerda que puedes filtrar por Ciudad, o rasgos del animal.</p>
-    <div>
-       <main>
-   
-         <form  class="formFiltro" action="#" method="post">
-
-             <button type='submit'  id='muestraFiltro' name='muestraFiltro' style='border:none'>FILTRO</button>
-
-    <!--FILTRO ANIMALES -->
-                <?php   if(isset($_POST['muestraFiltro'])){  ?>  
-
-                        <div class="input-group mb-2">
+        <div style="display:flex;justify-content:center">
+        <div style="display:flex;flex-direction:column;width:240px"> <button type='submit' name='mostrar_filtro' onclick="mostrar_filtro()" class='btn btn-primary' >FILTRO</button>
+           
+       <!--FILTRO ANIMALES hidden-->
+         <form id="formulario2"name="formulario2" class="formFiltro" style="display: none;"action="#" method="post">
+                       <div class="input-group mb-2">
                             <label>TIPO  
                             <select name="tipo"> 
                             <option selected value="perro">perro</option>
@@ -51,10 +46,9 @@
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         </div>
                         <button type="submit" name="buscarAnimal" class="btn btn-primary btn-sm">Buscar</button>           
-
-                   <?php } ?>
               </form>
-  </div>   
+</div>
+</div>
 
   <div class="imagenes">
 
@@ -73,7 +67,7 @@
         } 
         ?>    
    </div> 
-   </main>
+  
 
 <script>
     const filtro = document.getElementById('muestraFiltro');

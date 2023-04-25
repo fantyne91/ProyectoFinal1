@@ -7,11 +7,12 @@
 $correo;
 
 function consulta_crearUsuario($nombre,$apellido,$correo,$pw){      
-
+  //  if(empty($nombreP)){$nombreP=null;}
+    $conexion=crearConexion();
     $query="INSERT INTO usuarios (nombre,apellido,correo,pw)
      VALUES ('$nombre','$apellido','$correo','$pw')";
-    $resultado=crearConexion()->query($query);  
-
+    $resultado=$conexion->query($query);  
+    cerrarConexion($conexion);
     /*La variable $persona almacenará el email del objeto de clase persona para reutilizarlo en sql insert usuario_animal
      */  
      
@@ -21,13 +22,24 @@ function consulta_crearUsuario($nombre,$apellido,$correo,$pw){
 
 function consulta_login($correo, $pw){
    
-    $query="SELECT correo, pw from usuarios where correo='$correo' and pw='$pw' ";
+    $query="SELECT * from usuarios where correo='$correo' and pw='$pw' ";
     $resultado=crearConexion()->query($query);     
     
     try{   
-        if ($datos= mysqli_fetch_array($resultado)){ 
-            //si COOKIES "DATOS" es = resultado:
+        if ($datos_usuario= mysqli_fetch_assoc($resultado)){ 
+            //si hay resultados
             //DEVUELVE $CORREO QUE SERA LO QUE USAREMOS 
+            
+            $persona = new Usuario(
+            $datos_usuario['id'],
+            $datos_usuario['nombre'],
+            $datos_usuario['apellido'],           
+            $datos_usuario['correo'],
+            $datos_usuario['pw'],
+            $datos_usuario['nombreP']
+        );
+            $_SESSION["sesion"] = $persona;  
+        
              return $correo;  
         }else{ 
                 echo("<p class='error'>Algun dato no coincide</p>");   
@@ -39,31 +51,7 @@ function consulta_login($correo, $pw){
     };  
 }
 
-function datosUsuario(){    
-    $correo=$_COOKIE['datos'];
-    
-    $query="SELECT nombre,apellido,correo,nombreP,info from usuarios where correo= '$correo' ";
-    $resultado=crearConexion()->query($query);
-    
-    while ($fila = mysqli_fetch_assoc($resultado)){
-        echo ("<b> Nombre: " . $fila['nombre'].
-        "<br>Apellido: " . $fila['apellido'].
-        "<br> Correo: ".$fila['correo'].
-        "<br>Protectora: ".$fila['nombreP']. "</b> </div>");
-    }    
-    return $resultado;
-}
-//añadir dato en objeto Persona con set()
-  function set_protectora($nombreP){
-    $_SESSION['nombreP'] = $nombreP;
-    $correo=$_COOKIE['datos'];
 
-    $conexion=crearConexion();
-    //$query1="INSERT INTO protectora_animal (nombreP) VALUES ('$nombreP')";
-    $query2="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$correo'";
-    $resultado1 = $conexion->query($query2);
-    //$resultado2 = $conexion->query($query2);
-    
-    return true;
-  }
+
+  
 ?>

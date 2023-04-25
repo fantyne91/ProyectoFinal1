@@ -1,18 +1,19 @@
 
 <?php 
 
-class Persona {
-    
+class Usuario {
+    private $id;
     private $nombre;
     private $apellido;
     private $correo;
     private $pw;  
-    private $nombreP;
+    public $nombreP;
     
 /** 
- * todo: pendiente poder modificar email?
+ * *CONSTRUCTOR PERSONA 
 */
-    public function __construct($nombre,$apellido,$correo,$pw,$nombreP) {
+    public function __construct($id,$nombre,$apellido,$correo,$pw,$nombreP) {
+        $this->id=$id;
         $this->nombre=$nombre;
         $this->apellido=$apellido;
         $this->correo=$correo;
@@ -20,32 +21,37 @@ class Persona {
         $this->nombreP=$nombreP;
         
     }
-    
-
-    public function getNombre() {
-        return $this->nombre;
+    //añadir dato en objeto Persona con set()
+    function set_protectora($nombreP){
+       
+       // $correo=$_COOKIE['datos'];
+    try{
+        $conexion=crearConexion();      
+        $query="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$this->correo'";
+        $resultado = $conexion->query($query);
+           
+    }catch(Exception $e){
+        header("Location: ../vista/errores_form.php?error_usuario=3"); 
+        exit();
     }
-
-    public function setNombre($nombre) {
-        // actualizar el nombre de la persona en la base de datos
-        // actualizar la propiedad de la clase
+    if ($resultado){
+       
+        $this->nombreP=$nombreP;   
+        return $resultado;  
     }
+      
+      }
 
-    public function getEdad() {
-        return $this->edad;
-    }
-
-    public function setEdad($edad) {
-        // actualizar la edad de la persona en la base de datos
-        // actualizar la propiedad de la clase
-    }
-
-    public function getEmail() {
-        return $this->correo;
-    }
-    // setProtectora(){
-
-    // }
-   
+      function datosUsuario(){    
+        
+            echo ("<b> Nombre: " . $this->nombre.
+            "<br>Apellido: " . $this->apellido.
+            "<br> Correo: ".$this->correo.
+            "<br>Protectora: ".$this->nombreP. "</b>
+     
+            ");
+            return true;
+        }    
+     
 }
 ?>

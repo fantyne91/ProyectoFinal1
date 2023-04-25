@@ -3,7 +3,6 @@
 
 <body>
 <?php
-
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
 ?>
@@ -12,13 +11,12 @@ include "../funciones/funciones_procesarForm.php";
       * todo : acceder directamente  "publica"
       */     -->
 
-<div style='background-color:rgba(46, 93, 150, 0.8)'> <a style='color:white' href='../vista/perfil.php'> Aquí puedes acceder a tu perfil. </a> </div> <br>
-       
-<?php if(isset($_COOKIE['datos'])){  var_dump($_SESSION['nombreP'])  ?>
+<main>     
+<?php if(isset($_COOKIE['datos'])){  ?>
   
     <div class='publicaAnimal'>
 
-    <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su dueño!</p>
+    <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!</p>
 
     <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
             
@@ -46,46 +44,28 @@ include "../funciones/funciones_procesarForm.php";
                    <input type='text' name='raza' placeholder='RAZA' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                
-                  <input required type='text' name='color' placeholder='*COLOR' class='form-control'
+                  <input required type='text' name='color' placeholder='COLOR*' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                </div>          
                <div class='input-group mb-2'>
                   <input type='text' name='cc' placeholder='COMUNIDAD AUTONOMA' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                   
-                  <input required type='text' name='ciudad' placeholder='*CIUDAD' class='form-control'
+                  <input required type='text' name='ciudad' placeholder='CIUDAD*' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-               </div>  
-              
-       
+               </div> 
                <div class='mb-3'>  
                        <textarea class='form-control' name='infoA' maxlength='320' id='exampleFormControlTextarea1' rows='3' placeholder='DESCRIBE CUANDO Y DONDE LO ENCONTRASTE...'></textarea>
-                       <button type='submit' id='submitAnimal' name='submitAnimal' >Guardar</button>
+                       <button type='submit' id='submitAnimal' name='submitAnimal'onclick="ventana_modal()" >Guardar</button>
                </div>
              </form> 
-        </div>";
-<?php  }   ?>
+        </div>
+    </main>
+<?php  }else{ ?>
+    <div class="cuadro"> Estás accediendo como visitante.<br> Para publicar <a class="link" href ="index.php">crea una cuenta</a> o <a class="link" href="perfil.php"> accede a tu perfil. </a> </div> <br>
+   
+<?php  }  ?>
 
-<script>
- const btnAbrirModal = document.getElementById('submitAnimal');
-// Obtener la ventana modal
-const miVentanaModal = document.getElementById('miVentanaModal');
-
-// Agregar un event listener al botón para abrir la ventana modal
-btnAbrirModal.addEventListener('click', function() {
-  miVentanaModal.style.display = 'block';
-});
-
-// const registrado=document.getElementById('creado');
-// const submitLogin=document.getElementByName('submitLogin');
-
-// submitLogin.addEventListener('click',function(){
-//     registrado.style.display = 'none';
-// })
-
-
-
- </script>
       
 </body>
 </html>

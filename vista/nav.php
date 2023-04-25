@@ -7,12 +7,15 @@
     <!-- incluimos bootsatrap en css y java-->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css" type="text/css" >
     <link rel="stylesheet" href="css.css" type="text/css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="vista.js"> </script>
     
     <title>Pet Finder</title>    
 </head>
 
 <header class="titulo">
         <h1 > Pet Finder </h1>
+       
 </header>
 <body>
 

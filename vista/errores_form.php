@@ -10,13 +10,16 @@
    
     try{
         if( $_GET['error_usuario'] ==1){            
-            echo ("<div class='error'>Ese correo ya está registrado</div>");
-            
+            echo ("<div class='error'>Ese correo ya está registrado</div>");           
        
         }     
         if( $_GET['error_usuario'] ==2){            
-            echo ("<div class='error'>Esa protectora ya está registrada</div>");
-            
+            echo ("<div class='error'>Esa protectora ya está registrada</div>");          
+       
+        }   
+        if( $_GET['error_usuario'] ==3){            
+            echo ("<div class='error'>El usuario se ha creado correctamente, pero esa asociación ya existe y tiene un email asociado.</div>
+            <a href='perfil.php>'");            
        
         }         
        

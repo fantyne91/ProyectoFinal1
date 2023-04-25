@@ -18,24 +18,24 @@ nav{
     list-style: none;   
     padding: 0px 100px !important;  
     box-shadow: 4px 0px 4px 2px #3C6CA8;  
-    
     width: 100%;     
 }
 
 main{
     display: flex;   
-    flex-wrap: wrap; 
+    
     justify-content: center;    
 }
 .entrada{    
     padding:0px 100px 30px 100px;
    width: 100%; 
-   display: inline-block;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
   
 a.link{
-    color:rgb(227, 242, 214);
-   font-style: oblique;   
+    color:rgb(255, 255, 255);      
 }
 label{
     margin: 5px;
@@ -91,17 +91,18 @@ input.form-control{
     margin:0px;
     padding: 10px;
     margin-left: 22px;
-    width: 30%;   
+    min-width: 10%;   
     display: flex;  
     flex-direction: column;
 }
 .cuadro{
-    background-color:#3C6CA8;
+    background-color: rgba(46, 93, 150, 0.8);
     color: white;
     font-size:0.9em;
-    border-radius: 10px;     
-    padding: 5px;
-    display: inline-block;
+    padding: 30px;
+    border-radius: 30px;
+       
+   
 }
 /* IMAGENES */
 .imagenes{
@@ -111,7 +112,7 @@ input.form-control{
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-    margin:0px 13px;   
+   
     min-height: 50vh;
 
 }
@@ -137,7 +138,6 @@ input.form-control{
 /*BUSCO*/
 .formFiltro {
     float: left;
-    margin-left: 30px; 
 }
 
 /*PUBLICAR*/
@@ -189,11 +189,6 @@ div.publicaAnimal{
 #datosPerfil{
     width:400px;    
     float:left;
-}
-.info{
-    display: flex;
-    margin: 0px 20px;
-    width: 100%;
 }
 
 /*VISTA ANIMAL*/

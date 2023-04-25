@@ -1,11 +1,11 @@
 <?php
 include "conexion.php";
-include "persona.php";
+
 include "animal.php";
 
 $id;
 /**
- * todo: hacer tabla ciudad id, para luego consulta por ciudades. 
+ * 
  */
 function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo,$nombreP){
     //insertar imagen:
@@ -34,7 +34,7 @@ function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$c
         return $resultado;
 }
 /**
- * CONSULTA PARA OBTENER ANIMALES PUBLICADOS EN PERFIL
+ * CONSULTA PARA OBTENER ANIMALES PUBLICADOS por usuario EN PERFIL
  */
 function consulta_usuarioAnimal($correo){
     $query= "SELECT foto, id, correo from animales where correo='$correo'";
@@ -69,11 +69,11 @@ function filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad){
     foreach ( $resultado as $datos) {
      echo "<div class='imagen'>
              <div class='card' style='width: 12rem;'>
-                 <img src='".$datos['foto']."' class='card-img-top' alt='' height='120px' width='100px'>
+                 <img src='".$datos['foto']."' class='card-img-top' alt='' height='120px' width='98px'>
   
                  <div class='card-body'>
                      <h5 class='card-title'>". $datos['ciudad']."</h5>                
-                     <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>Go </a>
+                     <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>VER</a>
                  </div>
              </div>
          </div>";     
@@ -91,12 +91,12 @@ function consultaUltimos(){
         foreach ( $resultado as $datos){         
        
        echo "<div class='imagen'>
-                  <div class='card' style='width: 12rem;'>
-                    <img src='".$datos['foto']."' class='card-img-top' alt='' height='120px' width='100px'>
+                  <div class='card' style='width: 10rem;'>
+                    <img src='".$datos['foto']."' class='card-img-top'  height='120px' width='98px'>
   
                     <div class='card-body'>
                         <h5 class='card-title'>". $datos['ciudad']."</h5>                
-                        <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>Go </a>
+                        <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>VER </a>
                     </div>
                   </div>
              </div>";        
@@ -115,12 +115,12 @@ function consultaUltimos(){
         /* obtener array asociativo */
         foreach ( $resultado as $datos) {    
             echo "<div class='imagen'>
-            <div class='card' style='width: 12rem;'>
-                <img src='".$datos['foto']."' class='card-img-top' alt='' height='120px' width='100px'>
+            <div class='card' style='width: 10rem;'>
+                <img src='".$datos['foto']."' class='card-img-top' alt='' height='120px' width='98px'>
         
                 <div class='card-body'>
                     <h5 class='card-title'>". $datos['ciudad']."</h5>                
-                    <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>Go </a>
+                    <a href='vista_animal.php?id_animal=". $datos['id']."' class='btn btn-primary'>VER</a>
                 </div>
             </div>
             </div>";
