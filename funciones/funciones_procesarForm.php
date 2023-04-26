@@ -2,24 +2,21 @@
 
 <?php
 
-include "consultas_usuario.php";
-include "persona.php";
+include "../modelo/consultas_usuario.php";
+include "usuario.php";
 
 /**
  * PAGINA PHP INTERMEDIA FORMULARIOS, EVITA DUPLICIDAD DATOS ENVIADOS.
- * todo://Class persona tiene metodos: crear usuario, login..etc. cambiar todo a clases. al hacer login establece clase y usa atributos, no SESION?
+ * todo:// añadir boton borrar animal o modificar informacion.
     //error publicar pq sesion nombrep se establece solo al ingresar la asociacion, luego se pierde.
  */       
     session_start();
-
-   
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {    
    
     /**  Guardar en base de datos con funcion Crear Usuario 
      * todo: error al poner aso desde index repetido?  */    
-    if (isset($_POST['submitCrear'])) { 
-        
+    if (isset($_POST['submitCrear'])) {         
        
         $nombre = $_POST['crearNombre'];
         $apellido = $_POST['crearApellido'];
@@ -30,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             consulta_crearUsuario($nombre,$apellido,$correo,$pw); 
           
                 if (consulta_login($correo, $pw)){
-                    setcookie("datos",$correo,time()+2000, "/" );   
-                                     
+                    setcookie("datos",$correo,time()+2000, "/" );                                     
                 }  
                 
                // SI NOMBREP NO ESTA VACIA ENTONCES SE LLAMA A LA FUNCION SET_PROTECTORA, la cual esta establecida como UNIQUE en bd
@@ -40,17 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         
                         $nombreP=$_POST['crearNombreP'];
                         $persona=$_SESSION['sesion'];
-                        $persona->set_protectora($nombreP);
-                        
+                        $persona->set_protectora($nombreP);                        
                     }
                     header("Location: ../vista/perfil.php"); 
                     exit();
         }catch(Exception $e){   
-           //si   
+           //si el usuario ya existe  
            header("Location: ../vista/errores_form.php?error_usuario=1");  
         }   
     } 
-    
     
     /** SI SE PUBLICA UN ANIMAL*/
     if (isset($_REQUEST['submitAnimal'])){
@@ -67,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $correo=$_COOKIE["datos"];
 
             if(consulta_guardarAnimal($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo,$nombreP)){
-                $nuevo= new Animal($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo,$nombreP);           
+               // $nuevo= new Animal($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo,$nombreP);           
                 
                 echo   "  <div id='miVentanaModal' class='ventana-modal'>
                 <div class='contenido-ventana'>
@@ -99,8 +93,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../vista/errores_form.php?error_usuario=2"); 
         }        
     }
-   
-    
-    
 }
+    if(isset($_POST['confirmaBorrar'])){
+        $id=$_POST['id'];
+        borrarAnimal($id);
+    }
+
+   
+if (isset($_POST['editar'])){
+     $id=$_POST['id'];
+     $info=$_POST['info'];
+     var_dump($info);
+     
+     editar_Animal($id,$info);
+   }
+
+
 ?>

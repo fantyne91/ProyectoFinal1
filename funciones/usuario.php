@@ -24,22 +24,20 @@ class Usuario {
     //añadir dato en objeto Persona con set()
     function set_protectora($nombreP){
        
-       // $correo=$_COOKIE['datos'];
-    try{
-        $conexion=crearConexion();      
-        $query="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$this->correo'";
-        $resultado = $conexion->query($query);
-           
-    }catch(Exception $e){
-        header("Location: ../vista/errores_form.php?error_usuario=3"); 
-        exit();
-    }
-    if ($resultado){
-       
-        $this->nombreP=$nombreP;   
-        return $resultado;  
-    }
-      
+         try{
+             $conexion=crearConexion();      
+             $query="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$this->correo'";
+             $resultado = $conexion->query($query);
+
+         }catch(Exception $e){
+             header("Location: ../vista/errores_form.php?error_usuario=3"); 
+             exit();
+         }
+         if ($resultado){
+
+             $this->nombreP=$nombreP;   
+             return $resultado;  
+         }      
       }
 
       function datosUsuario(){    
@@ -47,11 +45,21 @@ class Usuario {
             echo ("<b> Nombre: " . $this->nombre.
             "<br>Apellido: " . $this->apellido.
             "<br> Correo: ".$this->correo.
-            "<br>Protectora: ".$this->nombreP. "</b>
-     
+            "<br>Protectora: ".$this->nombreP. "</b>     
             ");
             return true;
         }    
-     
+        function editarAnimal(){
+           
+            if (isset($_POST['info'])){
+              
+              $info=$_POST['info'];
+
+              var_dump($info);
+              editar_Animal($id,$info);
+              return $resultado;
+          }
+
+    } 
 }
 ?>

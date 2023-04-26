@@ -8,7 +8,7 @@ include "../funciones/funciones_procesarForm.php";
 ?>
       <!-- /**
       * *LLAMAMOS FUNCION LOGIN CON DATOS DEL POST
-      * todo : acceder directamente  "publica"
+      * todo : poder borrar o modificar info animal.
       */     -->
 
 <main>     
@@ -19,7 +19,7 @@ include "../funciones/funciones_procesarForm.php";
     <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!
       <br> -><a class="link" href="perfil.php"> accede a tu perfil </a><-</p>
 
-    <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
+    <form class='formAnimal' action='../funciones/funciones_procesarForm.php' method='POST' enctype='multipart/form-data' >     
             
           <p><b> Introduce los datos que puedas del animal encontrado:</b></p>
               

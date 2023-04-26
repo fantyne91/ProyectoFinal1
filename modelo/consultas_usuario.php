@@ -7,15 +7,13 @@
 $correo;
 
 function consulta_crearUsuario($nombre,$apellido,$correo,$pw){      
-  //  if(empty($nombreP)){$nombreP=null;}
+  
     $conexion=crearConexion();
     $query="INSERT INTO usuarios (nombre,apellido,correo,pw)
      VALUES ('$nombre','$apellido','$correo','$pw')";
     $resultado=$conexion->query($query);  
     cerrarConexion($conexion);
-    /*La variable $persona almacenará el email del objeto de clase persona para reutilizarlo en sql insert usuario_animal
-     */  
-     
+           
     return $resultado;    
 }
 
@@ -27,8 +25,8 @@ function consulta_login($correo, $pw){
     
     try{   
         if ($datos_usuario= mysqli_fetch_assoc($resultado)){ 
-            //si hay resultados
-            //DEVUELVE $CORREO QUE SERA LO QUE USAREMOS 
+            /*La variable $persona almacenará el email del objeto de clase persona para reutilizarlo en sql insert usuario_animal
+     */
             
             $persona = new Usuario(
             $datos_usuario['id'],

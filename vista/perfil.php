@@ -7,9 +7,9 @@
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
 $persona=$_SESSION['sesion']; 
-?>
+$id="";
 
-<?php if(!empty($_COOKIE['datos'])){ ?> 
+if(!empty($_COOKIE['datos'])){ ?> 
    
 <div style='background-color:rgb(60, 108, 168,0.8);color:white'>el método de contacto con los demás usuarios será el correo electrónico proporcionado, recuerda revisarlo</div><br>
 <main> 
@@ -30,24 +30,44 @@ $persona=$_SESSION['sesion'];
                     </form>          
                 </div>  
                
-          </div><br>
-            
-
-
-<!-- JavaScript: función para mostrar el formulario -->
-
-   
-        
+          </div><br>         
 </main> 
       <br>
       <h1> tus mascotas publicadas:</h1>  
           <div class='imagenes'>                    
-              <?php consulta_usuarioAnimal($_COOKIE['datos']); }?>           
+              <?php consulta_usuarioAnimal($_COOKIE['datos']); 
+           
+           if (isset($_POST['borrarAnimal'])){
+            $id=$_POST['id'];
+            echo " <div id='miVentanaModal' class='ventana-modal'>
+            <div class='contenido-ventana'>
+                <p>Estás seguro de eliminar el animal?</p>
+                 <form method='POST' action='#'>
+                     <input type='hidden' name='id' value='".$id."'>
+                     <button type='submit' name='confirmaBorrar'class='btn btn-primary'style='width:50px'>Si </button>                   
+                 </form> <br>   <a href=perfil.php> Cancelar   </a> 
+                 </div>
+            </div>";
+          }
+          if (isset($_POST['editarAnimal'])){
+            $id=$_POST['id'];
+            echo   " <div id='miVentanaModal' class='ventana-modal'>
+                       <div class='contenido-ventana'>
+                           <form method='POST' action='#'>
+                                <input type='hidden' name='id' value='".$id."'>
+                                <textarea class='form-control' name='info'></textarea><br>
+                                <button type='submit' name='editar'class='btn btn-primary'>editar </button>
+                            </form><a href=perfil.php> Cancelar   </a>  </div>
+                       </div>";
+          } }
+             
+           ?>       
+           
+              
           </div>
-
+          
 <!-- SI NO TIENE COOKIE MUESTRA LOGIN: var_dump( $_SESSION['sesion']);  -->
   <?php    }else{ 
-
       echo" <div>        
               <form  class='formLoggin' action='#' method='post'>     <br>
                <p> Para publicar <a href='index.php'>crea una cuenta</a> o  haz Login:</p>
