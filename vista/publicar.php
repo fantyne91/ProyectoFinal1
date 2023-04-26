@@ -16,7 +16,8 @@ include "../funciones/funciones_procesarForm.php";
   
     <div class='publicaAnimal'>
 
-    <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!</p>
+    <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!
+      <br> -><a class="link" href="perfil.php"> accede a tu perfil </a><-</p>
 
     <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
             
@@ -62,7 +63,19 @@ include "../funciones/funciones_procesarForm.php";
         </div>
     </main>
 <?php  }else{ ?>
-    <div class="cuadro"> Estás accediendo como visitante.<br> Para publicar <a class="link" href ="index.php">crea una cuenta</a> o <a class="link" href="perfil.php"> accede a tu perfil. </a> </div> <br>
+    <div>        
+              <form  class='formLoggin' action='#' method='post'>     <br>
+               <p> Para publicar <a href='index.php'>crea una cuenta</a> o  haz Login:</p>
+                          <label>Haz loggin:</label>
+                          <div class='input-group mb-2'>                
+                             <input required type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+                          </div>                
+                          <div class='input-group mb-2'>                 
+                             <input required type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+                          </div>
+                          <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
+                </form>          
+               </div>  <br>
    
 <?php  }  ?>
 

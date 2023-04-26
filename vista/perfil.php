@@ -16,22 +16,23 @@ $persona=$_SESSION['sesion'];
       <div class='entrada'>
         <h1>tus datos:</h1> 
           <?php  if ($persona->datosUsuario()){    ?>
-            <br>
-            <div>
-               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button>
+      </div>    <br>
+            <div class='entrada_perfil' >
+               
+               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>
                <button name='mostrar_form' onclick="mostrar_form()" class='btn btn-primary'>Cambiar protectora</button>
-          </div><br>
-            <div  class="input-group mb-2" style="">
+               <div  id="formulario" class="input-group mb-2" style="display: none">
               <!-- HTML: formulario oculto por defecto -->
-                    <form id="formulario" name="formulario" action= '#' method='post' style="display:flex;flex-direction:row;margin-left:50px;display: none;">                 
+                    <form  name="formulario" action= '#' method='post' style="display:flex;flex-direction:row;">                 
                         <input type="text" name="nombreP" placeholder="cambiar protectora" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        <button type="submit" name="submit_asociacion" class="btn btn-primary">añadir</button>
-                       
-                    </form>
-          
-                    </div>  
-</form>
+                        <button type="submit" name="submit_asociacion" class="btn btn-primary">añadir</button>                       
+                    </form>          
+                </div>  
+               
+          </div><br>
+            
+
 
 <!-- JavaScript: función para mostrar el formulario -->
 
@@ -60,11 +61,13 @@ $persona=$_SESSION['sesion'];
                           <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
                 </form>          
                </div> ";     
+               
   }var_dump($_SESSION['sesion']);
   ?>
   <script>
     
   </script>
+
   </body>
   </html>
       

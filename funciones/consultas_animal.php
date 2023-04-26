@@ -23,12 +23,15 @@ function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$c
         global $id;
         $id = $conexion->insert_id;
 
-        
-        /** incluimos en la tabla animal_usuario si obtenemos la ID recien creada en BD*/
-        if ($id){
-             $query2="INSERT INTO protectora_animal (id,nombreP) VALUES ('$id','$nombreP')";
-             $resultado=$conexion->query($query2);          
+        if ($nombreP===!null){
+            if ($id){
+                $query2="INSERT INTO protectora_animal (id,nombreP) VALUES ('$id','$nombreP')";
+                $resultado=$conexion->query($query2);          
+           }
+
         }
+        /** incluimos en la tabla animal_usuario si obtenemos la ID recien creada en BD*/
+        
         
         $conexion=cerrarConexion( $conexion);
         return $resultado;

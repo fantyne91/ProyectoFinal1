@@ -28,7 +28,14 @@ main{
 }
 .entrada{    
     padding:0px 100px 30px 100px;
-   width: 100%; 
+  
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.entrada_perfil{    
+    padding:0px 50px 30px 50px;
+  
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -132,7 +139,8 @@ input.form-control{
     background-color:#3C6CA8 ;
     text-shadow: 2px 1px 10px rgb(18, 48, 80);
     width: auto;
-    height:25px;
+    height: auto;
+    margin:0px 20px;
     padding:3px;
 }
 /*BUSCO*/

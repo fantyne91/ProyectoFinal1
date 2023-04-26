@@ -35,6 +35,13 @@ function mostrar_filtro() {
 
 
 
+function validar_expresion(correo) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(correo);
+} 
+
+
+
 
 
 function cerrar_sesion() {

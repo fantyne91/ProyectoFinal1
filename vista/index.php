@@ -18,7 +18,7 @@ include "../funciones/funciones_procesarForm.php";
                 <div>                   
                     <button name='mostrar_form' onclick="mostrar_crearUsuario()" class='btn btn-primary'>CREAR USUARIO</button>
                 </div><br>
-            <form id='formulario_index'   action="../funciones/funciones_procesarForm.php" method="post" style="display:none">
+            <form id='formulario_index'   action="#" method="post" style="display:none">
                 <label>Crea un usuario:</label>
                 <div class="input-group mb-2 bs-dark">
                     <input type="text" name="crearNombre" placeholder="nombre" class="form-control  "
@@ -29,8 +29,8 @@ include "../funciones/funciones_procesarForm.php";
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-2">
-                    <input required type="text" id="correo" name="crearCorreo" placeholder="email*" class="form-control  "
-                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input required type="text" id="correo" onblur="validarEmail()" name="crearCorreo" placeholder="email*" class="form-control  "
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
                 </div>
                 <div class="input-group mb-2">
                     <input required type="text" name="crearPw" placeholder="contraseña*" class="form-control"
@@ -53,23 +53,21 @@ include "../funciones/funciones_procesarForm.php";
        </div>
             
      </main>   
- <!-- <script src="js/bootstrap.min.js"> 
-     var correo=document.getElementById("correo");
+ <script > 
+        
+   /**FUNCION validar  EMAIL ONBLUR */     
+   function validarEmail(){
+    var correo=document.getElementById("correo");
     var errorCorreo = document.getElementById("error-correo");
-
-    correo.addEventListener("input", function(event) {
-        if (validarEmail(correo.value)) {
-          return true
+        if (validar_expresion(correo.value)) {
+                errorCorreo.innerHTML = "";
+                return true;  
         } else {
-          errorCorreo.innerHTML = "Por favor ingresa un correo válido";
+                errorCorreo.innerHTML = "Por favor ingresa un correo válido";
+                return false; 
         }
-      });
-       
- function validarEmail(correo) {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(correo);
-}
- </script>     -->
+} 
+ </script>    
 </body>
 
  <!--FOOTER BOOTSTRAP (en linea)-->

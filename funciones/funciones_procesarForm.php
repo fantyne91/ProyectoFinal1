@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     /**  Guardar en base de datos con funcion Crear Usuario 
      * todo: error al poner aso desde index repetido?  */    
     if (isset($_POST['submitCrear'])) { 
+        
        
         $nombre = $_POST['crearNombre'];
         $apellido = $_POST['crearApellido'];
@@ -47,8 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }catch(Exception $e){   
            //si   
            header("Location: ../vista/errores_form.php?error_usuario=1");  
-        }    
-    }
+        }   
+    } 
+    
     
     /** SI SE PUBLICA UN ANIMAL*/
     if (isset($_REQUEST['submitAnimal'])){
@@ -80,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          if(consulta_login($_POST['correo'],$_POST['pw'])){   
             // unset($_SESSION['nombreP']);
             setcookie("datos",$_POST['correo'],time()+2000, "/" );
-            header("Location: ../vista/perfil.php");  
+            header("Location: ../vista/publicar.php");  
          }
            
     } 
