@@ -14,9 +14,7 @@ $id = $_GET['id_animal'];
 
 	 get_datosAnimal($id);
 	 get_datosProtectora($id);
-	 if (isset($_COOKIE['datos'])){
-
-	 }
+	
 	//  echo "<button  onclick='editarAnimal($id)' name='editarAnimal' class='btn btn-primary'>editar animal</button><br>
     //            <button  onclick='borrarAnimal($id)' class='btn btn-primary'>eliminar animal</button>";
 	?>

@@ -27,24 +27,15 @@ function get_datosAnimal($id){
 }
 function get_datosProtectora($id){
     $conexion=crearConexion();
-    $query="SELECT nombreP from protectora_animal where id=$id"	;
+    $query="SELECT nombreP from protectora_animal where id='$id'"	;
     $resultado = $conexion->query($query);
 
 if (mysqli_num_rows($resultado) > 0) {
 	$fila = mysqli_fetch_assoc($resultado);
     $nombreP=$fila['nombreP'];
-	echo "<div>Nombre de la protectora:".$fila['nombreP']."</div><br>";
+	echo "<div>Nombre de la protectora:".$nombreP."</div><br>";
 
-    // $query2="SELECT correo FROM usuarios WHERE nombreP= '$nombreP'";    
-    // $resultado2=$conexion->query($query2);
-    // $fila2 = mysqli_fetch_assoc($resultado2);
-    // var_dump($resultado2);
-    // if (isset($_COOKIE['datos'])) {
-    //     if($_COOKIE['datos']===$fila2){
-    //         echo "<button  onclick='editarAnimal($id)' name='editarAnimal' class='btn btn-primary'>editar animal</button><br>
-    //         <button  onclick='borrarAnimal($id)' class='btn btn-primary'>eliminar animal</button>"; 
-    //     }   
-    // } 
+    return $resultado;
 }else {
 	echo "El animal no pertenece a una Protectora";
 }
