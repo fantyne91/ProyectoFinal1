@@ -25,7 +25,7 @@ function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$c
         
         if ($nombreP==!null){           
                 
-                $query2="INSERT INTO protectora_animal (id,nombreP) VALUES ('$id','$nombreP')";
+                $query2="INSERT INTO protectora_animal (id_animal,nombreP) VALUES ('$id','$nombreP')";
                 $resultado2=$conexion->query($query2);                         
         }                       
         $conexion=cerrarConexion( $conexion);
@@ -42,14 +42,14 @@ function consulta_usuarioAnimal($correo){
         $id= $fila['id'];       
 
         echo ("<div class='imagen'>
-        <a class='linkAzul' href='vista_animal.php?id_animal=". $fila['id']."' >
+        <a class='linkAzul' href='vista_animal.php?id_animal=". $id."' >
                    <div class='card' style='width: 10rem;'>
                 <img src='". $fila['foto']."' class='card-img-top' alt='' height='120px' width='98px'  >
-                ID: " . $fila['id']. "</a> 
-                 <form method='POST' action='#'>
+                ID: " . $id. "</a> 
+                 <form method='POST' action='#' style='border:none; background-color:white'>
                      <input type='hidden' name='id' value='".$id."'>                  
-                     <button type='submit' name='editarAnimal' class='btn btn-primary'>Editar</button><br>
-                     <button type='submit' name='borrarAnimal'class='btn btn-primary'>Eliminar </button>
+                     <button type='submit' name='editarAnimal' class='btn btn-primary'style='padding:2px;margin:2px'>Editar</button><br>
+                     <button type='submit' name='borrarAnimal'class='btn btn-primary'style='padding:2px;margin:2px'>Eliminar </button>
                  </form> 
                 </div></div>");                       
        } 
@@ -73,8 +73,9 @@ function borrarAnimal($id){
  }
 
 /**FILTRAR Y MOSTRAR ANIMALES  */
-function filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad){
+function filtrarBusqueda($tipo,$tamano){
 
+    $conexion=crearConexion();
     $query="SELECT * FROM animales WHERE tipo LIKE '%{$tipo}%' AND tamaño LIKE '%{$tamano}%' ";                   
 
              if (isset($_POST['buscaRaza'])){   
@@ -89,7 +90,7 @@ function filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad){
              if (isset($_POST['buscaCiudad'])){   
                 $query=$query." AND ciudad LIKE '%{$_POST['buscaCiudad']}%'";
              }                   
-    $resultado = crearConexion()->query($query);
+    $resultado = $conexion->query($query);
     
     foreach ( $resultado as $datos) {
       echo "<div class='imagen'>
@@ -102,7 +103,8 @@ function filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad){
                 </div>
                 </a>
            </div>";  
-    }   
+    }
+    cerrarConexion($conexion);
   return $resultado;    
 }
 
@@ -112,7 +114,7 @@ function consultaUltimos(){
     $resultado=crearConexion()->query($query);
        
     if ($resultado){
-        /* obtener array asociativo */
+        /* obtener array */
         foreach ( $resultado as $datos){         
        
               echo "<div class='imagen'>

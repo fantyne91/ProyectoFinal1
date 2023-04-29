@@ -4,9 +4,8 @@ include "conexion.php";
 function get_datosAnimal($id){
     $conexion=crearConexion();
     $query = "SELECT * FROM animales WHERE id = $id";
-    $resultado = $conexion->query($query);
-    
-    // Mostrar los datos del animal en la página web
+    $resultado = $conexion->query($query);    
+   
     if (mysqli_num_rows($resultado) > 0) {
     
         $fila = mysqli_fetch_assoc($resultado);
@@ -20,6 +19,7 @@ function get_datosAnimal($id){
         echo "<p>Comunidad Autonoma: " . $fila['cc'] . "</p>";
         echo "<p>Ciudad: " . $fila['ciudad'] . "</p>";
         echo "<p>Contacto: " . $fila['correo'] . "</p>";
+        echo "<p>Fecha publicación : " . $fila['fecha'] . "</p>";
         echo "<p>Información: " . $fila['info'] . "</p></div>
             </div>";	
     }
@@ -27,7 +27,7 @@ function get_datosAnimal($id){
 }
 function get_datosProtectora($id){
     $conexion=crearConexion();
-    $query="SELECT nombreP from protectora_animal where id='$id'"	;
+    $query="SELECT nombreP from protectora_animal where id_animal='$id'"	;
     $resultado = $conexion->query($query);
 
 if (mysqli_num_rows($resultado) > 0) {

@@ -25,9 +25,9 @@
           <a class="navbar-brand" href="index.php">
             <img src="img/logo1.jpg" alt="Logo" width="45" height="45" style="border-radius:40px; border-style:solid; border-color:#3C6CA8" class="d-inline-block align-text-top">
            
-                <li><a href="busqueda.php" > Busco  mascota </a>  </li>      
+                <li><a href="busqueda_mascota.php"> Busco  mascota </a>  </li>      
                 <li><a href="publicar.php" > Publicar mascota </a> </li> 
-                <li><a href="acoger.php" >Acoger o adoptar </a> </li> 
+                <li><a href="adoptar.php" >Acoger o adoptar </a> </li> 
                 <li><a href="perfil.php">Perfil </a> </li> 
           </a>
         </div>

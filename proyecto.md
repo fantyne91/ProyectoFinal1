@@ -20,4 +20,7 @@ Los usuarios a través de la barra de navegación podrán acceder a diferentes i
 todo:
  no afecte mayuscula y minuscula a los forms
  no pertenece a una protectora en vista_animal
-se reenvia 2 veces el form publicar
+se reenvia 2 veces el form publicar, enviar form a funciones_procesar y poder header?
+cambiar formato fecha mostrada animal.
+modificar email en prfil si no es pk
+sesion caducada en buscar mascota??==?==????

@@ -21,8 +21,9 @@ if(!empty($_COOKIE['datos'])){ ?>
                
                <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>
                <button name='mostrar_form' onclick="mostrar_form()" class='btn btn-primary'>Cambiar protectora</button>
-               <div  id="formulario" class="input-group mb-2" style="display: none">
-              <!-- HTML: formulario oculto por defecto -->
+            
+               <!-- HTML: formulario oculto por defecto -->
+               <div  id="formulario" class="input-group mb-2" style="display: none">             
                     <form  name="formulario" action= '#' method='post' style="display:flex;flex-direction:row;">                 
                         <input type="text" name="nombreP" placeholder="cambiar protectora" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

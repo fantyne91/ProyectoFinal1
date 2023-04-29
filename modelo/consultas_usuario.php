@@ -6,7 +6,7 @@
 
 $correo;
 
-function consulta_crearUsuario($nombre,$apellido,$correo,$pw){      
+function crearUsuario($nombre,$apellido,$correo,$pw){      
   
     $conexion=crearConexion();
     $query="INSERT INTO usuarios (nombre,apellido,correo,pw)
@@ -25,7 +25,7 @@ function consulta_login($correo, $pw){
     
     try{   
         if ($datos_usuario= mysqli_fetch_assoc($resultado)){ 
-            /*La variable $persona almacenará el email del objeto de clase persona para reutilizarlo en sql insert usuario_animal
+            /*Se almacena el correo en cookie para reutilizarlo en diversas funciones
      */
             
             $persona = new Usuario(
@@ -34,10 +34,11 @@ function consulta_login($correo, $pw){
             $datos_usuario['apellido'],           
             $datos_usuario['correo'],
             $datos_usuario['pw'],
-            $datos_usuario['nombreP']
-        );
+            $datos_usuario['nombreP'],
+            $datos_usuario['fecha'] );
+
             $_SESSION["sesion"] = $persona;  
-        
+             setcookie("datos",$correo,time()+2000, "/" ); 
              return $correo;  
         }else{ 
                 echo("<p class='error'>Algun dato no coincide</p>");   

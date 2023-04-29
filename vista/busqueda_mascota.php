@@ -56,12 +56,9 @@
         if (isset($_POST['buscarAnimal'])){
             $tipo=$_POST['tipo'];
             $tamano=$_POST['tamano'];
-            $raza=$_POST['buscaRaza'] ;
-            $color=$_POST['buscaColor'];
-            $cc=$_POST['buscaCC'];
-            $ciudad=$_POST['buscaCiudad'];
+           
         
-            filtrarBusqueda($tipo,$tamano,$raza,$color,$cc,$ciudad);
+            filtrarBusqueda($tipo,$tamano);
         }else{
             consultaUltimos();
         } 
