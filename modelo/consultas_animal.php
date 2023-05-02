@@ -35,7 +35,7 @@ function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$c
  * CONSULTA PARA OBTENER ANIMALES PUBLICADOS por usuario EN PERFIL
  */
 function consulta_usuarioAnimal($correo){
-    $query= "SELECT * from animales where correo='$correo'";
+    $query= "SELECT * from animales where correo='$correo' ORDER BY  fecha DESC";
     $resultado=crearConexion()->query($query);   
 
     while ($fila = mysqli_fetch_assoc($resultado)){
@@ -46,10 +46,10 @@ function consulta_usuarioAnimal($correo){
                    <div class='card' style='width: 10rem;'>
                 <img src='". $fila['foto']."' class='card-img-top' alt='' height='120px' width='98px'  >
                 ID: " . $id. "</a> 
-                 <form method='POST' action='#' style='border:none; background-color:white'>
+                 <form method='POST' action='#' style='border:none; display:flex;justify-content:center'>
                      <input type='hidden' name='id' value='".$id."'>                  
-                     <button type='submit' name='editarAnimal' class='btn btn-primary'style='padding:2px;margin:2px'>Editar</button><br>
-                     <button type='submit' name='borrarAnimal'class='btn btn-primary'style='padding:2px;margin:2px'>Eliminar </button>
+                     <button type='submit' name='editarAnimal' class='btn btn-primary'style='padding:3px;margin:3px'>Editar</button><br>
+                     <button type='submit' name='borrarAnimal'class='btn btn-primary'style='padding:3px;margin:3px'>Eliminar </button>
                  </form> 
                 </div></div>");                       
        } 
@@ -108,7 +108,7 @@ function filtrarBusqueda($tipo,$tamano){
   return $resultado;    
 }
 
-function consultaUltimos(){
+function consultaPrimeros(){
   
     $query="SELECT * FROM animales ORDER BY  fecha ASC ";  
     $resultado=crearConexion()->query($query);
@@ -132,7 +132,7 @@ function consultaUltimos(){
  return $resultado;
  }   
 
- function consultaPrimeros(){
+ function consultaUltimos(){
     $conexion=crearConexion();
     $query="SELECT * FROM animales ORDER BY  fecha DESC ";  
     $resultado=$conexion->query($query);

@@ -6,10 +6,7 @@
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
 ?>
-      <!-- /**
-      * *LLAMAMOS FUNCION LOGIN CON DATOS DEL POST
-      * todo : poder borrar o modificar info animal.
-      */     -->
+     
 
 <main>     
 <?php if(isset($_COOKIE['datos'])){  ?>
@@ -17,7 +14,7 @@ include "../funciones/funciones_procesarForm.php";
     <div class='publicaAnimal'>
 
     <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!
-      <br> -><a class="link" href="perfil.php"> accede a tu perfil </a><-</p>
+      <br> -><a class="link" href="perfil.php"> accede a tu perfil </a><-  </p>
 
     <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
             

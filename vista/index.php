@@ -33,7 +33,7 @@ include "../funciones/funciones_procesarForm.php";
                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
                 </div>
                 <div class="input-group mb-2">
-                    <input required type="text" name="crearPw" placeholder="contraseña*" class="form-control"
+                    <input required type='password' name="crearPw" placeholder="contraseña*" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <label>eres una protectora?</label>
@@ -53,6 +53,7 @@ include "../funciones/funciones_procesarForm.php";
        </div>
             
      </main>   
+     
  <script > 
         
    /**FUNCION validar  EMAIL ONBLUR */     

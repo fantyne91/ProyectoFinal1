@@ -9,7 +9,7 @@
 
    <p class="entrada"> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
             Recuerda que puedes filtrar por Ciudad, o rasgos del animal.</p>
-        <div style="display:flex;justify-content:center">
+   <div style="display:flex;justify-content:center">
         <div style="display:flex;flex-direction:column;width:240px"> <button type='submit' name='mostrar_filtro' onclick="mostrar_filtro()" class='btn btn-primary' >FILTRO</button>
            
        <!--FILTRO ANIMALES hidden-->

@@ -27,19 +27,13 @@ main{
     justify-content: center;    
 }
 .entrada{    
-    padding:0px 100px 30px 100px;
+    padding:0px 70px 30px 70px;
   
    display: flex;
    flex-direction: column;
    justify-content: center;
 }
-.entrada_perfil{    
-    padding:0px 0px 30px 50px;
-  
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-}
+
 a.linkAzul{
     color:#21518b ;
     text-decoration: none;
@@ -60,7 +54,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 100vh;
+   
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important; 
     color: #21518b  ;  
 }
@@ -122,7 +116,7 @@ input.form-control{
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-   
+   padding:30px;
     min-height: 50vh;
 
 }
@@ -143,7 +137,7 @@ input.form-control{
     text-shadow: 2px 1px 10px rgb(18, 48, 80);
     width: auto;
     height: auto;
-    margin:0px 20px;
+    margin:0px 0px;
     padding:3px;
 }
 /*BUSCO*/
@@ -200,6 +194,13 @@ div.publicaAnimal{
 #datosPerfil{
     width:400px;    
     float:left;
+}
+.entrada_perfil{    
+    padding:0px 0px 30px 0px;
+  
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 /*VISTA ANIMAL*/

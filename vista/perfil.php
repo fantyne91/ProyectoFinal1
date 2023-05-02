@@ -16,22 +16,29 @@ if(!empty($_COOKIE['datos'])){ ?>
       <div class='entrada'>
         <h1>tus datos:</h1> 
           <?php  if ($persona->datosUsuario()){    ?>
-      </div>    <br>
-            <div class='entrada_perfil' >
-               
-               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>
-               <button name='mostrar_form' onclick="mostrar_form()" class='btn btn-primary'>Cambiar protectora</button>
+            <br>
             
-               <!-- HTML: formulario oculto por defecto -->
-               <div  id="formulario" class="input-group mb-2" style="display: none">             
+
+
+
+
+      </div>    
+      <div class='entrada_perfil' >
+               
+              
+               <button name='mostrar_form' onclick="mostrar_form()" class='btn btn-primary'>Cambiar protectora</button><br>  
+                <!-- HTML: formulario oculto por defecto -->
+                <div  id="formulario" class="input-group mb-2" style="display: none">             
                     <form  name="formulario" action= '#' method='post' style="display:flex;flex-direction:row;">                 
                         <input type="text" name="nombreP" placeholder="cambiar protectora" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         <button type="submit" name="submit_asociacion" class="btn btn-primary">añadir</button>                       
                     </form>          
                 </div>  
+               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>
+              
                
-          </div><br>         
+          </div>    
 </main> 
       <br>
       <h1> tus mascotas publicadas:</h1>  
@@ -83,7 +90,7 @@ if(!empty($_COOKIE['datos'])){ ?>
                 </form>          
                </div> ";     
                
-  }var_dump($_SESSION['sesion']);
+  }
   ?>
   <script>
     

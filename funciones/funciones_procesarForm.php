@@ -6,16 +6,13 @@ include "../modelo/consultas_usuario.php";
 include "usuario.php";
 
 /**
- * PAGINA PHP INTERMEDIA FORMULARIOS, EVITA DUPLICIDAD DATOS ENVIADOS.
- * todo:// añadir boton borrar animal o modificar informacion.
-    //error publicar pq sesion nombrep se establece solo al ingresar la asociacion, luego se pierde.
+ * PAGINA PHP INTERMEDIA FORMULARIOS, EVITA DUPLICIDAD DATOS ENVIADOS. 
  */       
     session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {    
    
     /**  Guardar en base de datos con funcion Crear Usuario 
-     * 
      */    
     if (isset($_POST['submitCrear'])) {         
        
@@ -59,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      /** SI SE PUBLICA UN ANIMAL, REQUIERE QUE LA COOKIE EXISTA, SI LA COOKIE CADUCA DEBE VOLVER A INICIAR SESION*/
     if(isset($_COOKIE["datos"])){
 
-     
+        /**SUBMIT PUBLICAR ANIMAL */
             if (isset($_REQUEST['submitAnimal']))  {      
 
                 $tipo = $_POST['tipo'];
@@ -77,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         echo   "  <div id='miVentanaModal' class='ventana-modal'>
                         <div class='contenido-ventana'>
-                          <p>Has publicado un animal. <br> Accede a tu <a href=perfil.php> perfil   </p>              
+                          <p>Has publicado un animal. <br> Accede a tu <a href=perfil.php> perfil  </a> </p>              
                         </div>
                         </div>";   
                     }   
@@ -96,12 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ../vista/errores_form.php?error_usuario=2"); 
                 }        
             }
-
+            /**BORRAR ANIMAL */
             if(isset($_POST['confirmaBorrar'])){
                 $id=$_POST['id'];
                 borrarAnimal($id);
             }
-   
+            /**EDITAR ANIMAL */
             if (isset($_POST['editar'])){
                  $id=$_POST['id'];
                  $info=$_POST['info'];

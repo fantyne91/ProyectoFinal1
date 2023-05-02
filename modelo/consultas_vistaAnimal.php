@@ -9,6 +9,12 @@ function get_datosAnimal($id){
     if (mysqli_num_rows($resultado) > 0) {
     
         $fila = mysqli_fetch_assoc($resultado);
+        //convertir formato con hora de bd  a formato sin hora en orden d-m-a
+        $date= strtotime($fila['fecha']);
+        $fecha = date('d-m-y', $date);
+
+
+
         echo "<div class='vista_animal'>
               <img  src=". $fila['foto']." width='280px'  width='280px'> </img><br>";
         echo "<div style='margin-left:40px'><p>Tipo: " . $fila['tipo'] . "</p>";
@@ -19,7 +25,7 @@ function get_datosAnimal($id){
         echo "<p>Comunidad Autonoma: " . $fila['cc'] . "</p>";
         echo "<p>Ciudad: " . $fila['ciudad'] . "</p>";
         echo "<p>Contacto: " . $fila['correo'] . "</p>";
-        echo "<p>Fecha publicación : " . $fila['fecha'] . "</p>";
+        echo "<p>Fecha publicación : " . $fecha. "</p>";
         echo "<p>Información: " . $fila['info'] . "</p></div>
             </div>";	
     }

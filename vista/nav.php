@@ -10,11 +10,11 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="vista.js"> </script>
     
-    <title>Pet Finder</title>    
+    <title>Mascotas Perdidas</title>    
 </head>
 
 <header class="titulo">
-        <h1 > Pet Finder </h1>
+        <h1 > mascotas perdidas </h1>
        
 </header>
 <body>
