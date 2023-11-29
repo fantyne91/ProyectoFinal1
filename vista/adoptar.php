@@ -5,7 +5,7 @@
     
 </head>
 <body>
-  
+  <!--  PAGINA INTERFAZ DE ACOGER O ADOPTAR-->
     <?php 
        include "nav.php";
    ?>
@@ -23,7 +23,7 @@
             Puedes ayudarles acogiendo o adoptando!
       </p> 
       <label> Busca animales <a href="busco.php"> Aquí.</a>
-      <p> Recuerda que si has encontrado un animal y le encuentras una acogida temporal, es importante mantener el contacto por si su familia apareciera!</p>
+      <p> Recuerda que si has encontrado un animal y le encuentras una acogida temporal, es importante mantener el contacto por si su familia aparece!</p>
      
     </label>
        

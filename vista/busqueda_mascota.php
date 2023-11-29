@@ -4,25 +4,28 @@
 <body>    
     <?php     
    include "nav.php"; 
-   include "../funciones/funciones_procesarForm.php"; 
+   include "../modelo/consultas_animal.php"; 
    ?>
 
-   <p class="entrada"> Aquí nuestros colaboradores publicarán las ultimas mascotas encontradas. <br>
-            Recuerda que puedes filtrar por Ciudad, o rasgos del animal.</p>
-   <div style="display:flex;justify-content:center">
-        <div style="display:flex;flex-direction:column;width:240px"> <button type='submit' name='mostrar_filtro' onclick="mostrar_filtro()" class='btn btn-primary' >FILTRO</button>
+<!--  PAGINA INTERFAZ BUSCAR MASCOTA-->
+   <p class="entrada"> Aquí nuestros colaboradores publicarán las mascotas encontradas. <br>
+            Recuerda que puedes filtrar por Ciudad, o rasgos del animal más predominantes.</p>
+  
+<div>
+         <button name='mostrar_filtro' onclick="mostrar_filtro()" class='btn btn-primary' >FILTRO</button>
            
        <!--FILTRO ANIMALES hidden-->
-         <form id="formulario2"name="formulario2" class="formFiltro" style="display: none;"action="#" method="post">
-                       <div class="input-group mb-2">
-                            <label>TIPO  
+         <form id="formulario2" name="formulario2" class="form" style="display: none;" action="#" method="post">
+                       <div>
+                            <label>tipo
                             <select name="tipo"> 
                             <option selected value="perro">perro</option>
                             <option  value="dato">gato</option>
                             <option  value="otros">otros</option>
                             </select>    </label>
-
-                            <label>TAMAÑO: 
+                        </div>
+                        <div>
+                            <label>tamaño: 
                             <select name="tamano"> 
                             <option  value="pequeno">pequeño</option>
                             <option selected value="mediano">mediano</option>
@@ -47,11 +50,11 @@
                         </div>
                         <button type="submit" name="buscarAnimal" class="btn btn-primary btn-sm">Buscar</button>           
               </form>
-</div>
+
 </div>
 
   <div class="imagenes">
-
+<!--  FILTRA O MUESTRA ULTIMOS-->
         <?php 
         if (isset($_POST['buscarAnimal'])){
             $tipo=$_POST['tipo'];
@@ -64,16 +67,6 @@
         } 
         ?>    
    </div> 
-  
-
-<script>
-    const filtro = document.getElementById('muestraFiltro');
-
-// Agregar un event listener al botón para abrir la ventana modal
-filtro.addEventListener('click', function() {
-  filtro.style.display = 'none';
-});
-    </script>
   
 </body>
 </html>

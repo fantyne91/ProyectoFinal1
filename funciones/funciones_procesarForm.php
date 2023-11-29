@@ -5,6 +5,7 @@
 include "../modelo/consultas_usuario.php";
 include "usuario.php";
 
+
 /**
  * PAGINA PHP INTERMEDIA FORMULARIOS, EVITA DUPLICIDAD DATOS ENVIADOS. 
  */       
@@ -20,6 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $apellido = $_POST['crearApellido'];
         $correo= $_POST['crearCorreo'];
         $pw = $_POST['crearPw']; 
+        //tolower
+        $nombre = strtolower($nombre);
+        $apellido = strtolower($apellido);
+        $correo= strtolower($correo);
        
          try{  
             crearUsuario($nombre,$apellido,$correo,$pw); 
@@ -32,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (!empty($_POST['crearNombreP'])) {
                         
                         $nombreP=$_POST['crearNombreP'];
+                       
                         $persona=$_SESSION['sesion'];
                         $persona->set_protectora($nombreP);                        
                     }
@@ -69,6 +75,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $persona= $_SESSION['sesion'];
                 $nombreP=$persona->nombreP; //
                 $correo=$_COOKIE["datos"];
+                //tolower
+                $raza= strtolower($raza);;
+                $color = strtolower($color);
+                $cc =  strtolower($cc);   
+                $ciudad=  strtolower($ciudad);  
 
                     if(consulta_guardarAnimal($tipo,$tamano,$raza,$color,$cc,$ciudad,$infoA,$correo,$nombreP)){                      
 
@@ -83,15 +94,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             /** ACTUALIZAR PROTECTORA ANIMAL */
             if(isset($_POST['submit_asociacion'])){    
                 $nombreP=$_POST['nombreP'] ;
+                $ciudadP=$_POST['ciudadP'] ;
+                $telefonoP=$_POST['nombreP'] ;
+                $web=$_POST['web'] ;
                 $persona=$_SESSION['sesion'];
             
-                try{
-                    if( $persona->set_protectora($nombreP)){    
+             
+                    if( $persona->set_protectora($nombreP,$ciudadP,$telefonoP,$web)){    
                         header("Location: ../vista/perfil.php"); 
-                    }
-                } catch(Exception $e){
-                    header("Location: ../vista/errores_form.php?error_usuario=2"); 
-                }        
+                    }else{ echo "error"; }
+                      
             }
             /**BORRAR ANIMAL */
             if(isset($_POST['confirmaBorrar'])){

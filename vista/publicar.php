@@ -6,73 +6,75 @@
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
 ?>
-     
-
+<p class='linea' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia </p>
+       
+<!-- SI SE HA HECHO LOGIN Y EXISTE COOKIE DATOS -->
 <main>     
 <?php if(isset($_COOKIE['datos'])){  ?>
-  
-    <div class='publicaAnimal'>
+    
+    <div class='publicaAnimal'>    
 
-    <p class='avisoAnimal' > Si has encontrado un animal perdido, recuerda llevarlo a un <u>veterinario o Policia Local</u>, ya que pueden leerle el chip y encontrar a su familia!
-      <br> -><a class="link" href="perfil.php"> accede a tu perfil </a><-  </p>
-
-    <form class='formAnimal' action='#' method='POST' enctype='multipart/form-data' >     
+    <form class='form' action='#' method='POST' enctype='multipart/form-data' >     
             
-          <p><b> Introduce los datos que puedas del animal encontrado:</b></p>
+    <label>Introduce los datos que puedas aportar del animal encontrado:</label>
               
-               <div  style='justify-content:center' class='input-group mb-2' style=''>
-                  <label>TIPO: 
-                  <select name='tipo'> </label>
+               <div>
+               <label>tipo: </label>
+                  <select name='tipo'> 
                   <option selected value='perro'>Perro</option>
                   <option  value='gato'>Gato</option>
                   <option  value='otros'>Otros</option>
                   </select>    
              
-                  <label>TAMAÑO: 
-                  <select name='tamano'> </label>
+                  <label> tamaño: </label>
+                  <select name='tamano'> 
                   <option  value='pequeno'>Pequeño</option>
                   <option selected value='mediano'>Mediano</option>
                   <option  value='grande'>Grande</option>                    
                   </select>    
-                  
-                  <input type='file' name='insertarImagen'> 
-               </div>
+                </div>
+                  <label>Inserta una foto: </label>
+                  <input type='file' class='insertarImagen' name='insertarImagen'> <br>
+                  <br>
                
-               <div class='input-group mb-2 bs-dark'>
-                   <input type='text' name='raza' placeholder='RAZA' class='form-control'
+               <div>
+                   <input type='text' name='raza' placeholder='raza' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                
-                  <input required type='text' name='color' placeholder='COLOR*' class='form-control'
+                  <input required type='text' name='color' placeholder='color*' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-               </div>          
-               <div class='input-group mb-2'>
-                  <input type='text' name='cc' placeholder='COMUNIDAD AUTONOMA' class='form-control'
+             
+                  <input type='text' name='cc' placeholder='comunidad autonoma' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                   
-                  <input required type='text' name='ciudad' placeholder='CIUDAD*' class='form-control'
+                  <input required type='text' name='ciudad' placeholder='ciudad*' class='form-control'
                       aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                </div> 
                <div class='mb-3'>  
-                       <textarea class='form-control' name='infoA' maxlength='320' id='exampleFormControlTextarea1' rows='3' placeholder='DESCRIBE CUANDO Y DONDE LO ENCONTRASTE...'></textarea>
-                       <button type='submit' id='submitAnimal' name='submitAnimal'onclick="ventana_modal()" >Guardar</button>
+                       <textarea class='form-control' name='infoA' maxlength='320' id='exampleFormControlTextarea1' rows='3' placeholder='Describe el animal, cuando y donde lo encontraste...'></textarea>
+                       <button type='submit' class='btn btn-primary' id='submitAnimal' name='submitAnimal'onclick="ventana_modal()" >Guardar</button>
                </div>
              </form> 
         </div>
-    </main>
+    </main><!-- SI NO SE HA HECHO LOGIN  -->
 <?php  }else{ ?>
     <div>        
-              <form  class='formLoggin' action='#' method='post'>     <br>
-               <p> Para publicar <a href='index.php'>crea una cuenta</a> o  haz Login:</p>
-                          <label>Haz loggin:</label>
-                          <div class='input-group mb-2'>                
-                             <input required type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-                          </div>                
-                          <div class='input-group mb-2'>                 
-                             <input required type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
-                          </div>
-                          <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
-                </form>          
+    <form  class='form' action='#' method='post'>     <br>
+               
+               <label> INICIA SESIÓN:</label>
+               <div class='input-group mb-2'>                
+                  <input required type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+               </div>                
+               <div class='input-group mb-2'>                 
+                  <input required type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
+               </div>
+               <label> o <a href='index.php'>crea una cuenta</a></label><br>
+               <div><button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
+               </div>  
+            
+     </form>          
                </div>  <br>
+               
    
 <?php  }  ?>
 

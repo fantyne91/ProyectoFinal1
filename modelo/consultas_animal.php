@@ -1,12 +1,12 @@
 <?php
 include "conexion.php";
 
-//include "../funciones/animal.php";
 
 $id;
 /**
- * 
+ * CONSULTAS ANIMALES
  */
+/**GUARDAR ANIMAL  */
 function consulta_guardarAnimal($tipo,$tamaño,$raza,$color,$cc,$ciudad,$info,$correo,$nombreP){
     //insertar imagen:
         $nombre_imagen=$_FILES['insertarImagen']['name'];
@@ -48,7 +48,8 @@ function consulta_usuarioAnimal($correo){
                 ID: " . $id. "</a> 
                  <form method='POST' action='#' style='border:none; display:flex;justify-content:center'>
                      <input type='hidden' name='id' value='".$id."'>                  
-                     <button type='submit' name='editarAnimal' class='btn btn-primary'style='padding:3px;margin:3px'>Editar</button><br>
+                     <button type='submit' name='editarAnimal' <span class='material-symbols-outlined'>edit</span></button><br>
+                     
                      <button type='submit' name='borrarAnimal'class='btn btn-primary'style='padding:3px;margin:3px'>Eliminar </button>
                  </form> 
                 </div></div>");                       
@@ -56,6 +57,7 @@ function consulta_usuarioAnimal($correo){
       
     return $resultado;    
 }
+/**BORRAR ANIMAL  */
 function borrarAnimal($id){
     $conexion=crearConexion();
     $query="DELETE  FROM animales WHERE id='$id' ";  
@@ -63,6 +65,7 @@ function borrarAnimal($id){
     cerrarConexion($conexion); //
     return $resultado;
  }
+ /**EDITAR ANIMAL  */
  function editar_Animal($id,$info){
     $conexion=crearConexion();
     $query="UPDATE animales SET info = '$info' WHERE id='$id'";  
@@ -107,7 +110,7 @@ function filtrarBusqueda($tipo,$tamano){
     cerrarConexion($conexion);
   return $resultado;    
 }
-
+/**CONSULTAR ANIMALES PUBLICADOS PRIMERO  */
 function consultaPrimeros(){
   
     $query="SELECT * FROM animales ORDER BY  fecha ASC ";  
@@ -131,7 +134,7 @@ function consultaPrimeros(){
     }    
  return $resultado;
  }   
-
+/**CONSULTAR ULTIMOS ANIMALES PUBLICADOS   */
  function consultaUltimos(){
     $conexion=crearConexion();
     $query="SELECT * FROM animales ORDER BY  fecha DESC ";  

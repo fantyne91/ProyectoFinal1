@@ -1,76 +1,201 @@
 
-/*GENERALES*/
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600&family=Dancing+Script&family=Josefin+Sans:wght@200;300;400;700&display=swap');
+
+
+/* Estilos para dispositivos móviles */
+/* @media (max-width: 767px) {
+    .container {
+      background-color: lightblue;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+  }
+  */ 
+  /*Estilos para ordenadores*/
+   @media (min-width: 760px) {
+   
+    h1 {
+      font-size: 36px;
+    }
+    .desktop-nav {
+        display: flex;
+        flex-direction: row; 
+        align-items: center;  
+        gap: 50px;      
+    }
+    .desktop-nav>a {
+        padding: 0px 20px 0px 20px ;
+        color:#7f2fab;
+        text-decoration: none;      
+    }  
+    .desktop-nav>a:hover {
+        text-decoration: underline;    
+    }
+
+    .material-symbols-outlined {
+        color:purple;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        border:1px solid;
+        border-radius: 50%;
+        font-variation-settings:
+        'FILL' 6,
+        'wght' 1000,
+        'GRAD' 3,
+        'opsz' 24 !important
+       
+    }
+    .symbol-container:hover{
+       transform: scale(1.5);
+    
+    }
+    .mobile-nav {
+        display: none;
+    }
+  }
+
+   /*Estilos para MOVIL*/
+   @media only screen and (max-width: 760px) {
+    .desktop-nav {       
+        display: none;
+      }
+  
+    .mobile-nav {
+      display: block;
+    }
+  
+    .toggle-btn {
+      background-color: #3b3838;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+  
+    .menu-items {
+      display: none;
+       
+    }
+    .menu-items.show-menu {
+        display: flex;
+      }
+  
+    .menu-items a {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+    }
+  }
+/*NAV*/
+
 header{    
-    height:110px ;     
-    padding:20px 30px;  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+    width: 100%;
     align-content: center;
     text-align: center;   
+    background-color: #FFEC3E;
+    padding: 4px;
+    font-variant: initial;
     
 }
-header>h1{
-    margin:0;
-    font-size: 60px;    
-    font-family: serif;   
-    color:#2c61a2  ;
+header>div{
+   margin :30px 10px 20px 0px;
+   padding-left:10px;   
+    color:#661f8c  ;   
 }
-nav{
-    margin-bottom: 70px;   
-    list-style: none;   
-    padding: 0px 100px !important;  
-    box-shadow: 4px 0px 4px 2px #3C6CA8;  
+.titulo{
+    margin: 0px !important;
+    font-size: 37px !important; 
+    letter-spacing: 2px;
+    font-family:'Josefin Sans', sans-serif;
+    font-weight: bold ;
+    border-radius: 28px;  
+    background-color: white;  
+    box-shadow: 0px 0px 14px 4px #ffffff; 
+    padding: 10px 10px 0px 10px;   
+}
+.navbar{
+    margin:0px 0px 50px 0px;  
+    padding: 5px 40px 5px 35px  !important;  
+    box-shadow: 4px 0px 4px 2px #661f8c;  
+    background-color: white;
     width: 100%;     
+    justify-content: center;   
 }
 
+a.link{
+    color:rgb(255, 255, 255);      
+}
+
+
+
+/*GENERALES*/
 main{
-    display: flex;   
+    display: flex; 
+    flex-direction: column;  
     
     justify-content: center;    
 }
 .entrada{    
-    padding:0px 70px 30px 70px;
-  
+    padding:0px 90px 30px 90px;  
    display: flex;
    flex-direction: column;
    justify-content: center;
+   font-family: 'Akshar', sans-serif;
 }
 
-a.linkAzul{
-    color:#21518b ;
-    text-decoration: none;
-}  
-a.link{
-    color:rgb(255, 255, 255);      
-}
 label{
     margin: 5px;
     font-weight: 800;
 }
 body{
-    background-color: rgb(244, 228, 200);
+    background-color: hsl(0, 0%, 100%);
     margin:0px ;
-    font-variant: small-caps;
+    width: 100%;
     text-align: center;
     /* CONSEGUIR FOOTER AL FINAL BODY con FLEX; MINIMO altura PANTALLA 100vh*/
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
+    font-variant: small-caps;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important; 
-    color: #21518b  ;  
+    color: #661f8c  ;  
+  
 }
-li{
-    font-weight:600;
+
+h3{
+    color:#471363
 }
+h2{
+    color:#471363
+}
+
+h4{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1.33em;
+}
+strong{
+    font-variant: small-caps;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.filosofia{
+   columns: 300px 2;
+   column-gap:30px;
+   padding: 20px;
+   text-align: left;
+}
+
 /*FORMULARIO GENERAL */
-form{
-    background-color: rgb(225, 239, 244)!important;
-    border-color:#5485c1;
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    padding:5px;   
-    
-}
 
 .error{
     color:black;
@@ -82,22 +207,33 @@ form{
    width: 220px;
    align-items: center;   
 }
-input.form-control{   
+.form-control{   
     font-size: 0.9em;
-    margin: 0px 5px;  
     font-variant: small-caps;
     font-family: inherit;
+    margin: 2px 1px 1px 1px;
+    border-color: #661f8c;
+   
 }
 
 /*INDEX FORMULARIO CREAR USUARIO */
-.formUsuario {       
-    float:left;   
-    margin:0px;
+.form{     
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin: 5px auto;
+    
+    width:300px;
+    height:auto; 
+    background-color: rgb(255, 255, 255)!important;   
+  
+    box-shadow:0px 0px 8px 1px #661f8c9c ;
+    border-radius: 5px;
     padding: 10px;
-    margin-left: 22px;
-    min-width: 10%;   
-    display: flex;  
-    flex-direction: column;
+    font-variant: small-caps;
+   
 }
 .cuadro{
     background-color: rgba(46, 93, 150, 0.8);
@@ -133,21 +269,31 @@ input.form-control{
 }
 .btn.btn-primary{
     font-size: small !important;
-    background-color:#3C6CA8 ;
+    background-color:#802fabad ;
     text-shadow: 2px 1px 10px rgb(18, 48, 80);
     width: auto;
     height: auto;
     margin:0px 0px;
     padding:3px;
 }
-/*BUSCO*/
-.formFiltro {
-    float: left;
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.insertarImagen{
+    font-size: 13px;
 }
 
 /*PUBLICAR*/
 .formLoggin {  
     /* FLEXBOX IMAGENES*/
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -156,7 +302,15 @@ input.form-control{
     margin: 5px auto;
     
     width:350px;
-    height:auto;    
+    height:auto; 
+    background-color: rgb(225, 239, 244)!important;
+    border-color:#5485c1;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+   
+ 
 } 
 div.publicaAnimal{
     display: inline-block;
@@ -202,15 +356,20 @@ div.publicaAnimal{
    flex-direction: column;
    justify-content: center;
 }
+.linea{
+    background-color: #ffec3e85;
+    color:black;
+}
 
 /*VISTA ANIMAL*/
 .vista_animal{
     display:flex;
     justify-content:center;
     margin:0px 40px;
-    align-items: center;    
+    align-items: center;  
+    
+    flex-wrap: wrap;  
 }
-
 
   /*FOOTER*/
   /* #footer{   

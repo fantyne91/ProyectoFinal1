@@ -4,6 +4,7 @@
   
 </head>
 <body>
+    <!-- CODIGOS DE ERROR RECIBIDOS POR GET -->
     <?php
     include "nav.php";
     include "../funciones/funciones_procesarForm.php";

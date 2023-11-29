@@ -1,74 +1,58 @@
 <!DOCTYPE html> 
 <html>
 <body>
+
 <?php 
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
-?>   
- 
-        <div class='entrada'>       
-        Busca tu mascota perdida, o colabora con asociaciones.          
-            <p><b>A continuación verás imágenes de las mascotas que más tiempo llevan esperando familia en nuestra web</b></p>               
-        <main>   
-         <?php if(empty($_COOKIE['datos'])){ ?>        
 
-        <!-- FORMULARIO CREAR USUARIO DISPLAY NONE HASTA QUE SE PRESIONA BOTON. -->
-         <div class="formUsuario" >
+?>   
+  <!--INTERFAZ  PAGINA PRINCIPAL   -->
+ <div class='entrada'>       
+        <h1>En buscador de mascotas queremos que encontrar una mascota, sea una tarea fácil.</h1><br>
+        <h3><u>nuestra filosofía:</u></h3>
+     <div class= 'filosofia'> 
+     <ul> <h4>
+        
+            <li>Somos conscientes de que muchos animalitos se pierden de su hogar y no existe una WEB con <strong>DATOS CENTRALIZADOS</strong> donde buscar,<br> AQUÍ LOS TIENES TODOS! <br><br>
+            Queremos que si buscas a tu mascota perdida o quieres adoptar, puedas <strong>FILTRAR Y NAVEGAR</strong> sin perder horas y horas buscando por asociaciones o grupos, el tiempo es oro en este caso ❤️</li><br>
             
-                <div>                   
-                    <button name='mostrar_form' onclick="mostrar_crearUsuario()" class='btn btn-primary'>CREAR USUARIO</button>
-                </div><br>
-            <form id='formulario_index'   action="#" method="post" style="display:none">
-                <label>Crea un usuario:</label>
-                <div class="input-group mb-2 bs-dark">
-                    <input type="text" name="crearNombre" placeholder="nombre" class="form-control  "
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-2">
-                    <input type="text" name="crearApellido" placeholder="apellido" class="form-control"
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-2">
-                    <input required type="text" id="correo" onblur="validarEmail()" name="crearCorreo" placeholder="email*" class="form-control  "
-                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
-                </div>
-                <div class="input-group mb-2">
-                    <input required type='password' name="crearPw" placeholder="contraseña*" class="form-control"
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <label>eres una protectora?</label>
-                <div class="input-group mb-2">
-                   <input type="text" name="crearNombreP" placeholder="nombre protectora" class="form-control"
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>                   
-                <button type="submit" name="submitCrear" class="btn btn-primary">Crear</button>
-               
-            </form>
-            <div id="error-correo" style="color:red;"></div>
-        </div>  
-     </div>
- <?php   }     ?>  
-        <div class="imagenes">    
-             <?php    consultaPrimeros();   ?>    
-       </div>
+            <li>Queremos que todas las <strong>PERSONAS Y ASOCIACIONES</strong> tengan las mismas oportunidades. <br><br> </li>
+            <li>Queremos ayudar con el <strong>TRANSPORTE DE ANIMALES</strong>, sabemos que es un tema complicado. <br><br></li> 
+            <li>Para nosotros lo más importante  es la seguridad de los perretes, por lo que para determinadas acciones requeriremos que estés registrado.</li> 
+        
+        </h4></ul> 
+    </div><br><br>
+     
+ </div>       
+     <main>   
+                    <!-- si no ha hecho login podrá ver el formulario crear usuario  -->
+                    <?php if(empty($_COOKIE['datos'])){ ?>        
+
+                    <!-- FORMULARIO CREAR USUARIO DISPLAY NONE  -->       
+                     <div>    
+                         <form action='formularios.php' method='get'>                           
+                             <button name='mostrar_form' value='1' class='btn btn-primary'>CREAR USUARIO</button>
+                         </form>
+                     </div><br>
+
+
+         <?php   } ?>  
+         <!-- MOSTRAR IMAGENES   -->
+         <h4><strong>A continuación verás imágenes de las mascotas que más tiempo llevan sin familia en nuestra web:</strong></h4> 
+        <div class="imagenes">  
+         
+             <?php   consultaPrimeros();       ?>    
+        </div>
             
      </main>   
      
- <script > 
-        
+
+ <script >        
    /**FUNCION validar  EMAIL ONBLUR */     
-   function validarEmail(){
-    var correo=document.getElementById("correo");
-    var errorCorreo = document.getElementById("error-correo");
-        if (validar_expresion(correo.value)) {
-                errorCorreo.innerHTML = "";
-                return true;  
-        } else {
-                errorCorreo.innerHTML = "Por favor ingresa un correo válido";
-                return false; 
-        }
-} 
+ 
  </script>    
+ 
 </body>
 
  <!--FOOTER BOOTSTRAP (en linea)-->

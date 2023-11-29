@@ -2,49 +2,46 @@
 <html lang="es">
 
 <body>
-
+ <!-- PAGINA  PERFIL, se muestran datos del usuario -->
 <?php
 include "nav.php";
 include "../funciones/funciones_procesarForm.php";
-$persona=$_SESSION['sesion']; 
-$id="";
 
-if(!empty($_COOKIE['datos'])){ ?> 
-   
-<div style='background-color:rgb(60, 108, 168,0.8);color:white'>el método de contacto con los demás usuarios será el correo electrónico proporcionado, recuerda revisarlo</div><br>
+
+// SI SE HA HECHO LOGIN:
+if(!empty($_COOKIE['datos'])){
+  $persona=$_SESSION['sesion']; 
+  $id="";  ?> 
+
+<div class='linea'>
+<h1>COMO FUNCIONA:</h1><br>
+        <li>Si encuentras un animal y tras publicarlo encuentras a alguien que pueda hacerse cargo, debes asegurarte de que va a estar en las mejores condiciones, <u>requiere un DNI o identificación.</u></li>
+        <li>Dispones de 5 anuncios gratuitos al año, si eres parte de una protectora asegurate de crear un perfil especifico.</li>
+        <li>el método de contacto con los demás usuarios será el correo electrónico proporcionado, recuerda revisarlo</li>
+</div><br>
 <main> 
+   
+   <!-- Se muestran datos y botones cambiar protectora y cerrar serion. -->
       <div class='entrada'>
+      
         <h1>tus datos:</h1> 
-          <?php  if ($persona->datosUsuario()){    ?>
-            <br>
-            
-
-
-
-
-      </div>    
+          <?php  if ($persona->datosUsuario()){    ?>   <br>
+       
       <div class='entrada_perfil' >
-               
-              
-               <button name='mostrar_form' onclick="mostrar_form()" class='btn btn-primary'>Cambiar protectora</button><br>  
+               <form method='get' action='formularios.php' >              
+               <button name='mostrar_form' value='2' class='btn btn-primary'>Modificar protectora</button><br>  
                 <!-- HTML: formulario oculto por defecto -->
-                <div  id="formulario" class="input-group mb-2" style="display: none">             
-                    <form  name="formulario" action= '#' method='post' style="display:flex;flex-direction:row;">                 
-                        <input type="text" name="nombreP" placeholder="cambiar protectora" class="form-control"
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        <button type="submit" name="submit_asociacion" class="btn btn-primary">añadir</button>                       
-                    </form>          
-                </div>  
-               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>
-              
-               
-          </div>    
+               </form> <br>
+               <button  onclick="cerrar_sesion()" name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button><br>               
+       </div>    
 </main> 
       <br>
+       <!-- mascotas publicadas  -->
       <h1> tus mascotas publicadas:</h1>  
           <div class='imagenes'>                    
               <?php consulta_usuarioAnimal($_COOKIE['datos']); 
-           
+
+           //TODO: ventanas modal de editar y borrar animal, iconos, editar full form
            if (isset($_POST['borrarAnimal'])){
             $id=$_POST['id'];
             echo " <div id='miVentanaModal' class='ventana-modal'>
@@ -77,25 +74,25 @@ if(!empty($_COOKIE['datos'])){ ?>
 <!-- SI NO TIENE COOKIE MUESTRA LOGIN: var_dump( $_SESSION['sesion']);  -->
   <?php    }else{ 
       echo" <div>        
-              <form  class='formLoggin' action='#' method='post'>     <br>
-               <p> Para publicar <a href='index.php'>crea una cuenta</a> o  haz Login:</p>
-                          <label>Haz loggin:</label>
+              <form  class='form' action='#' method='post'>     <br>
+               
+                          <label> INICIA SESIÓN:</label>
                           <div class='input-group mb-2'>                
                              <input required type='text' name='correo' placeholder='introduce email:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                           </div>                
                           <div class='input-group mb-2'>                 
                              <input required type='password' name='pw' placeholder='introduce contraseña:' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>
                           </div>
-                          <button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
+                          <label> o <a href='index.php'>crea una cuenta</a></label><br>
+                          <div><button type='submit'  name='submitLogin' class='btn btn-primary btn-sm'> Acceder</button>
+                          </div>  
+                       
                 </form>          
                </div> ";     
                
   }
   ?>
-  <script>
-    
-  </script>
-
+ 
   </body>
   </html>
       

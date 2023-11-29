@@ -1,11 +1,11 @@
 <?php
  /**
- * necesitamos que incluya consultas_animal para usar sus funciones de obtener animal, y no al revés.
+ * FUNCIONES USUARIO
  */
  include "consultas_animal.php";
 
 $correo;
-
+/**CREAR USUARIO  */
 function crearUsuario($nombre,$apellido,$correo,$pw){      
   
     $conexion=crearConexion();
@@ -17,7 +17,7 @@ function crearUsuario($nombre,$apellido,$correo,$pw){
     return $resultado;    
 }
 
-
+/**HACER LOGIN  */
 function consulta_login($correo, $pw){
    
     $query="SELECT * from usuarios where correo='$correo' and pw='$pw' ";

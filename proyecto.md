@@ -9,3 +9,17 @@ Los usuarios a través de la barra de navegación podrán acceder a diferentes i
 
 3.Un usuario registrado podrá publicar mascotas, añadiendo los diferentes datos requeridos o opcionales que luego serán mostrados a los usuarios.
 
+hacer??
+acogidas: listado de protectoras y sus ciudades, required
+macho hembra
+
+RELATIVAS Y ECONOMICAS, servicios:
+-  promoción de adiestradores
+- cobro +5 anuncios.
+- apoyo a personas sin recursos, donaciones 
+- promo y clasificación residencias vacaciones
+- transporte otras ciudades y  paises.(mafia)2
+- 
+SENIOR:
+*IDIOMAS, COMPRAS SUSRPCION??
+

@@ -11,7 +11,7 @@ class Usuario {
     public $fecha;
     
 /** 
- * *CONSTRUCTOR PERSONA 
+ * *CONSTRUCTOR 
 */
     public function __construct($id,$nombre,$apellido,$correo,$pw,$nombreP,$fecha) {
         $this->id=$id;
@@ -22,26 +22,51 @@ class Usuario {
         $this->nombreP=$nombreP;
         $this->fecha=$fecha;        
     }
-    //añadir dato en objeto Persona con set()
-    function set_protectora($nombreP){
-       
-         try{
-             $conexion=crearConexion();      
-             $query="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$this->correo'";
-             $resultado = $conexion->query($query);
+    /** SI NOMBREP ESTÁ VACIO SE BORRA DE TABLA PROTECTORAS Y SE GUARDA COMO NULL EN USUARIOS
+     * SI NO ESTÁ VACIO SE ACTUALIZAN LOS DATOS DE LAS 2 TABLAS
+     * añadir dato en objeto Persona con set() */ 
+   
+    function set_protectora($nombreP,$ciudadP,$telefonoP,$web){
+        $conexion=crearConexion();
 
-         }catch(Exception $e){
-             header("Location: ../vista/errores_form.php?error_usuario=2"); 
-             exit();
-         }
-         if ($resultado){
 
-             $this->nombreP=$nombreP;   
-             cerrarConexion($conexion);
-             return $resultado;  
-         }      
+        if ($nombreP === '') {
+           
+            $query="DELETE FROM protectoras WHERE correo = '$this->correo'";
+            $resultado=$conexion->query($query);
+            $this->nombreP='';
+            return $resultado;
+            
+
+        }else{
+
+            $nombreP = strtolower($nombreP);
+                try{
+                    $query2="INSERT INTO protectoras (nombre,ciudad,telefono,correo,web) VALUES ('$nombreP','$ciudadP','$telefonoP','$this->correo','$web')
+                    ON DUPLICATE KEY UPDATE nombre='$nombreP', ciudad='$ciudadP', telefono='$telefonoP', web='$web'";
+                    $resultado2 = $conexion->query($query2);  
+                       
+                    $query1="UPDATE usuarios SET nombreP='$nombreP' WHERE correo = '$this->correo'";
+                    $resultado1=$conexion->query($query1);    
+                        if ($resultado1){
+                        
+                           $this->nombreP=$nombreP;   
+                        
+                           return $resultado1;  
+                       }  
+                   
+                }catch(Exception $e){
+                
+                    header("Location:../vista/errores_form.php?error_usuario=2");
+                    exit();
+                }
+
+           
+         
+        }      
+        cerrarConexion($conexion);
       }
-
+//Imprime datos usuario
       function datosUsuario(){    
         
             echo ("<b> Nombre: " . $this->nombre.
@@ -51,17 +76,6 @@ class Usuario {
             ");
             return true;
         }    
-        // function editarAnimal(){
-           
-        //     if (isset($_POST['info'])){
-              
-        //       $info=$_POST['info'];
-
-        //       var_dump($info);
-        //       editar_Animal($id,$info);
-        //       return $resultado;
-        //   }
-
-    //} 
+     
 }
 ?>
